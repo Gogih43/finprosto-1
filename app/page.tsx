@@ -1,23 +1,13 @@
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Scenarios from '../components/Scenarios';
+import Compare from '../components/Compare';
+
 export default function Home() {
   return (
     <>
       {/* ==================== HEADER ==================== */}
-      <header className="w-full flex items-center justify-between px-8 py-5 border-b border-border bg-white z-50 sticky top-0">
-        <div className="text-2xl font-bold tracking-tight text-text uppercase">
-          <span className="text-primary">FIN</span>ПРОСТО
-        </div>
-        <nav className="hidden md:flex gap-8 text-[15px] font-medium text-secondary">
-          <a href="#" className="hover:text-text transition-colors">Кредиты</a>
-          <a href="#" className="hover:text-text transition-colors">Авто</a>
-          <a href="#" className="hover:text-text transition-colors">Ипотека</a>
-          <a href="#" className="hover:text-text transition-colors">Лизинг</a>
-          <a href="#" className="hover:text-text transition-colors">Долги</a>
-          <a href="#" className="hover:text-text transition-colors">Статьи</a>
-        </nav>
-        <div className="hidden md:flex items-center justify-center px-6 py-2.5 bg-background border border-border text-text font-medium rounded-xl hover:bg-gray-100 transition-colors cursor-pointer">
-          Войти
-        </div>
-      </header>
+      <Header />
 
       <main>
         {/* ==================== ЭКРАН 1: HERO ==================== */}
@@ -162,93 +152,10 @@ export default function Home() {
         </section>
 
         {/* ==================== ЭКРАН 3: КРЕДИТ VS ЛИЗИНГ ==================== */}
-        <section className="px-8 py-16 lg:px-16 border-b border-border/50">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
-            <div className="max-w-xl"><h2 className="text-4xl lg:text-[48px] font-bold leading-tight tracking-tight text-text">Что выгоднее: автокредит или лизинг?</h2><p className="mt-4 text-lg text-secondary leading-relaxed">Считаем реальные деньги на примере авто за 3 000 000 ₽.</p></div>
-            <div className="flex items-center bg-slate-200/60 p-1 rounded-xl shrink-0"><button className="px-6 py-2.5 rounded-lg text-sm font-medium text-secondary">Для физлица</button><button className="px-6 py-2.5 rounded-lg bg-white text-text text-sm font-bold shadow-sm ring-1 ring-black/5">Для бизнеса (ИП / ООО)</button></div>
-          </div>
-          <div className="relative bg-white rounded-[2rem] shadow-app border border-border overflow-hidden">
-            <div className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-border rounded-full items-center justify-center text-xs font-bold text-secondary shadow-sm z-20">VS</div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-border">
-              <div className="p-8 lg:p-12 bg-slate-50/50">
-                <div className="mb-8"><h3 className="text-2xl font-bold text-text mb-2">Автокредит</h3><p className="text-sm text-secondary">Классический кредит наличными.</p></div>
-                <div className="space-y-4 mb-10 font-mono text-sm">
-                  <div className="flex justify-between items-end pb-3 border-b border-border/60"><span className="text-secondary font-sans">Стоимость авто</span><span className="text-text font-medium">3 000 000 ₽</span></div>
-                  <div className="flex justify-between items-end pb-3 border-b border-border/60"><span className="text-secondary font-sans">Переплата банку</span><span className="text-red-500 font-medium">+ 850 000 ₽</span></div>
-                </div>
-                <div className="mt-8">
-                  <p className="text-[11px] font-bold text-secondary uppercase tracking-widest mb-3 font-sans">Итоговые расходы</p>
-                  <div className="flex items-end justify-between mb-2"><span className="text-3xl font-mono font-bold text-text">3 850 000 ₽</span></div>
-                  <div className="w-full h-3 bg-slate-200 rounded-full overflow-hidden flex"><div className="h-full bg-slate-400 w-[78%]"></div><div className="h-full bg-red-400 w-[22%]"></div></div>
-                </div>
-              </div>
-              <div className="p-8 lg:p-12 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent pointer-events-none"></div>
-                <div className="relative z-10">
-                  <div className="mb-8"><div className="flex items-center gap-3 mb-2"><h3 className="text-2xl font-bold text-primary">Лизинг</h3><span className="px-2 py-0.5 rounded bg-blue-100 text-primary text-[10px] font-bold uppercase tracking-wider">Выгодно для ИП/ООО</span></div><p className="text-sm text-secondary">Аренда с правом выкупа. Машина на балансе.</p></div>
-                  <div className="space-y-4 mb-10 font-mono text-sm">
-                    <div className="flex justify-between items-end pb-3 border-b border-border/60"><span className="text-secondary font-sans">Стоимость авто</span><span className="text-text font-medium">3 000 000 ₽</span></div>
-                    <div className="flex justify-between items-end pb-3 border-b border-border/60"><span className="text-secondary font-sans">Возврат НДС и налогов</span><span className="text-success font-bold">- 1 156 000 ₽</span></div>
-                  </div>
-                  <div className="mt-8">
-                    <p className="text-[11px] font-bold text-primary uppercase tracking-widest mb-3 font-sans">Итоговые расходы (с вычетами)</p>
-                    <div className="flex items-end justify-between mb-2"><span className="text-3xl font-mono font-bold text-primary">2 314 000 ₽</span></div>
-                    <div className="w-full h-3 bg-slate-100 rounded-full flex items-center relative">
-                      <div className="h-full bg-primary rounded-full absolute left-0" style={{ width: '60%' }}></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-slate-900 text-white p-6 lg:px-12 lg:py-8 flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-                <div><p className="text-sm text-slate-400 font-medium mb-1">Финальный вердикт алгоритма</p><p className="text-lg font-medium">Для бизнеса лизинг выгоднее на <span className="font-mono font-bold text-emerald-400">1 536 000 ₽</span></p></div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Compare />
 
-        {/* ==================== ЭКРАН 4: ЧТО ЕСЛИ ==================== */}
-        <section className="px-8 py-16 lg:px-16 border-b border-border/50 bg-slate-50/30">
-          <div className="max-w-2xl mb-12">
-            <h2 className="text-4xl lg:text-[48px] font-bold leading-tight tracking-tight text-text">А что, если изменить тактику?</h2>
-            <p className="mt-4 text-lg text-secondary leading-relaxed">Посмотрите, как досрочные платежи или рефинансирование влияют на ваш долг.</p>
-          </div>
-          <div className="bg-white rounded-[2rem] shadow-app border border-border overflow-hidden grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-border">
-            <div className="lg:col-span-5 p-8 lg:p-10 bg-slate-50/50 flex flex-col gap-4">
-              <p className="text-[11px] font-bold text-secondary uppercase tracking-widest mb-2">Выберите сценарий</p>
-              <div className="group flex items-center justify-between p-5 rounded-2xl border-2 border-primary bg-primaryLight/30 cursor-pointer relative shadow-sm">
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-10 bg-primary rounded-r-full"></div>
-                <div className="pl-2"><h4 className="font-bold text-text mb-1">Платить на 15 000 ₽ больше</h4><p className="text-xs text-secondary">Ежемесячное досрочное погашение</p></div>
-                <div className="w-12 h-7 bg-primary rounded-full relative shadow-inner"><div className="absolute right-1 top-1 w-5 h-5 bg-white rounded-full"></div></div>
-              </div>
-            </div>
-            <div className="lg:col-span-7 p-8 lg:p-12 relative overflow-hidden flex flex-col justify-between">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 relative z-10">
-                <div><p className="text-sm font-medium text-secondary mb-2">Сэкономленные деньги</p><div className="text-5xl font-mono font-bold text-success tracking-tighter">+ 412 000 ₽</div></div>
-                <div><p className="text-sm font-medium text-secondary mb-2">Новый срок кредита</p><div className="text-3xl font-mono font-bold text-text">1 г. 8 мес.</div></div>
-              </div>
-              <div className="relative w-full h-48 mt-auto z-10 border-b-2 border-l-2 border-border/50">
-                <svg viewBox="0 0 500 200" className="w-full h-full overflow-visible" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="saving" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#16A34A" stopOpacity="0.15"/>
-                      <stop offset="100%" stopColor="#16A34A" stopOpacity="0"/>
-                    </linearGradient>
-                    <pattern id="diagonal-stripe" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
-                        <line x1="0" y1="0" x2="0" y2="8" stroke="#16A34A" strokeWidth="1.5" strokeOpacity="0.3"/>
-                    </pattern>
-                  </defs>
-                  <path d="M 0 0 Q 250 20 500 200" fill="none" stroke="#667085" strokeWidth="2" strokeDasharray="6 6" />
-                  <path d="M 0 0 Q 250 20 500 200 L 280 200 Q 150 50 0 0 Z" fill="url(#diagonal-stripe)" />
-                  <path d="M 0 0 Q 150 50 280 200" fill="none" stroke="#2563EB" strokeWidth="4" strokeLinecap="round" />
-                  <path d="M 0 0 Q 150 50 280 200 L 0 200 Z" fill="url(#saving)" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* ==================== ЭКРАН 4: ИНТЕРАКТИВНЫЕ СЦЕНАРИИ ==================== */}
+        <Scenarios />
 
         {/* ==================== ЭКРАН 5: ДОЛГИ ==================== */}
         <section className="px-8 py-16 lg:px-16 border-b border-border/50">
@@ -319,51 +226,7 @@ export default function Home() {
       </main>
 
       {/* ==================== FOOTER ==================== */}
-      <footer className="w-full px-8 py-12 lg:px-16 border-t border-border bg-white">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-12">
-          <div className="lg:col-span-4 pr-4">
-            <div className="text-2xl font-bold tracking-tight text-text uppercase mb-4">
-              <span className="text-primary">FIN</span>ПРОСТО
-            </div>
-            <p className="text-sm text-secondary leading-relaxed mb-6">
-              Независимый финансовый помощник. Переводим банковский язык на человеческий.
-            </p>
-          </div>
-          <div className="lg:col-span-2 lg:col-start-6">
-            <p className="text-sm font-bold text-text mb-4">Услуги</p>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Кредит наличными</a></li>
-              <li><a href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Автокредит</a></li>
-              <li><a href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Ипотека</a></li>
-              <li><a href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Лизинг авто</a></li>
-            </ul>
-          </div>
-          <div className="lg:col-span-2">
-            <p className="text-sm font-bold text-text mb-4">Решения</p>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Рефинансирование</a></li>
-              <li><a href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Реструктуризация</a></li>
-              <li><a href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Списание долгов</a></li>
-            </ul>
-          </div>
-          <div className="lg:col-span-2">
-            <p className="text-sm font-bold text-text mb-4">Компания</p>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">О нас</a></li>
-              <li><a href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">База знаний</a></li>
-              <li><a href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Контакты</a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[11px] text-secondary leading-relaxed max-w-3xl">
-            © 2026 FINПРОСТО. Не является публичной офертой. Проект не является банком и не выдает кредиты. Анализ рынка на основе открытых данных ЦБ РФ.
-          </p>
-          <div className="flex gap-4">
-            <a href="#" className="text-[11px] text-secondary hover:text-text transition-colors whitespace-nowrap">Политика конфиденциальности</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }
