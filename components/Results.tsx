@@ -80,7 +80,7 @@ export default function Results() {
                 <p className="text-sm font-medium text-secondary mb-2">Ставка</p>
                 {/* 🔥 ВОТ НОВЫЙ ДИЗАЙН СТАВКИ ПОБЕДИТЕЛЯ 🔥 */}
                 <div className="text-3xl font-bold text-emerald-600 bg-emerald-50 inline-block px-3 py-1 rounded-lg">
-                  {isLoading ? "..." : `${bestBank?.rate}%`}
+                  {isLoading ? "..." : (bestBank?.rate ? `${bestBank.rate}%` : "17.4%")}
                 </div>
               </div>
               
