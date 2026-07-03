@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 
-// Описываем, как выглядит банк в данных от сервера
 interface BankData {
   name: string;
   rate: number;
@@ -10,21 +9,16 @@ interface BankData {
 }
 
 export default function Results() {
-  // Состояния для хранения данных
   const [bestBank, setBestBank] = useState<BankData | null>(null);
   const [otherBanks, setOtherBanks] = useState<BankData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Запрашиваем данные у Бэкенда при загрузке
   useEffect(() => {
-    // 🔥 ВОТ ЗДЕСЬ МЫ ЗАМЕНИЛИ ССЫЛКУ НА БОЕВУЮ 🔥
     fetch("https://finprosto-backend.onrender.com/api/get_market_data")
       .then((res) => res.json())
       .then((response) => {
         if (response.status === "success" && response.data.banks.length > 0) {
-          // Первый банк из списка считаем Победителем (Альфа)
           setBestBank(response.data.banks[0]);
-          // Остальные три банка идут в список сравнения
           setOtherBanks(response.data.banks.slice(1));
         }
         setIsLoading(false);
@@ -35,7 +29,6 @@ export default function Results() {
       });
   }, []);
 
-  // Функция для выбора правильного цвета кружка по имени банка
   const getBankColor = (name: string) => {
     if (name.includes('Сбер')) return 'bg-green-500 text-white';
     if (name.includes('ВТБ')) return 'bg-blue-600 text-white';
@@ -80,17 +73,18 @@ export default function Results() {
             </div>
 
             <div className="grid grid-cols-2 gap-8 mb-10 pb-10 border-b border-border">
-              <div><p className="text-sm font-medium text-secondary mb-2">Ежемесячный платеж</p><div className="text-4xl font-mono font-bold text-text">14 580 ₽</div></div>
-              <div><p className="text-sm font-medium text-secondary mb-2">Честная переплата</p><div className="text-4xl font-mono font-bold text-success">34 800 ₽</div></div>
+              <div><p className="text-sm font-medium text-secondary mb-2">Ежемесячный платеж</p><div className="text-4xl font-bold tracking-tight text-text">14 580 ₽</div></div>
+              <div><p className="text-sm font-medium text-secondary mb-2">Честная переплата</p><div className="text-4xl font-bold tracking-tight text-emerald-500">34 800 ₽</div></div>
               
               <div>
                 <p className="text-sm font-medium text-secondary mb-2">Ставка</p>
-                <div className="text-2xl font-mono font-medium text-text bg-yellow-100 inline-block px-2 rounded">
+                {/* 🔥 ВОТ НОВЫЙ ДИЗАЙН СТАВКИ ПОБЕДИТЕЛЯ 🔥 */}
+                <div className="text-3xl font-bold text-emerald-600 bg-emerald-50 inline-block px-3 py-1 rounded-lg">
                   {isLoading ? "..." : `${bestBank?.rate}%`}
                 </div>
               </div>
               
-              <div><p className="text-sm font-medium text-secondary mb-2">Срок</p><div className="text-2xl font-mono font-medium text-text">3 года</div></div>
+              <div><p className="text-sm font-medium text-secondary mb-2">Срок</p><div className="text-2xl font-bold text-text">3 года</div></div>
             </div>
 
             <div className="mb-10">
@@ -121,18 +115,19 @@ export default function Results() {
                       </div>
                       <span className="font-bold text-text">{bank.name}</span>
                     </div>
-                    <div className="px-2 py-1 rounded bg-slate-100 text-secondary text-[11px] font-bold font-mono border border-border/50">
+                    <div className="px-2 py-1 rounded bg-slate-100 text-secondary text-[11px] font-bold border border-border/50">
                       {bank.badge}
                     </div>
                   </div>
                   <div className="flex items-end justify-between">
                     <div>
                       <p className="text-[11px] text-secondary mb-1">Платеж</p>
-                      <p className="text-lg font-mono font-medium text-text">~ 15 500 ₽</p>
+                      <p className="text-lg font-bold tracking-tight text-text">~ 15 500 ₽</p>
                     </div>
                     <div className="text-right">
                       <p className="text-[11px] text-secondary mb-1">Ставка</p>
-                      <p className="text-lg font-mono font-medium text-text bg-yellow-100 px-1 rounded">{bank.rate}%</p>
+                      {/* 🔥 ВОТ НОВЫЙ ДИЗАЙН СТАВКИ ДЛЯ ДРУГИХ БАНКОВ 🔥 */}
+                      <p className="text-xl font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">{bank.rate}%</p>
                     </div>
                   </div>
                 </div>

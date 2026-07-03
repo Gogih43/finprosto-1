@@ -3,15 +3,10 @@
 import { useState, useEffect } from 'react';
 
 export default function Hero() {
-  // Память для ставки ЦБ
   const [cbrRate, setCbrRate] = useState<string>("...");
-  
-  // Память для ставки Альфа-Банка (по умолчанию ставим "...", пока грузится)
   const [alfaRate, setAlfaRate] = useState<string>("...");
 
-  // Этот код срабатывает при загрузке страницы
   useEffect(() => {
-    // 1. Запрашиваем ставку ЦБ (🔥 ИЗМЕНЕНА ССЫЛКА 🔥)
     fetch("https://finprosto-backend.onrender.com/api/get_cbr_rate")
       .then((res) => res.json())
       .then((data) => {
@@ -20,7 +15,6 @@ export default function Hero() {
       })
       .catch(() => setCbrRate("Нет связи"));
 
-    // 2. Запрашиваем ставку Альфа-Банка (🔥 ИЗМЕНЕНА ССЫЛКА 🔥)
     fetch("https://finprosto-backend.onrender.com/api/get_best_offer")
       .then((res) => res.json())
       .then((data) => {
@@ -43,7 +37,7 @@ export default function Hero() {
             Финансовый помощник
           </div>
           <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-slate-100 text-secondary border border-border text-[11px] font-bold uppercase tracking-wider shadow-sm">
-            Ставка ЦБ РФ: <span className="text-text font-mono ml-2 text-xs">{cbrRate}</span>
+            Ставка ЦБ РФ: <span className="text-text font-bold ml-2 text-sm">{cbrRate}</span>
           </div>
         </div>
 
@@ -62,7 +56,7 @@ export default function Hero() {
               <option value="refinance">Уменьшить платеж</option>
               <option value="leasing">Оформить лизинг</option>
             </select>
-            <input type="text" placeholder="500 000 ₽" className="w-full h-14 px-5 bg-transparent border border-border rounded-xl font-mono text-text placeholder-secondary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" />
+            <input type="text" placeholder="500 000 ₽" className="w-full h-14 px-5 bg-transparent border border-border rounded-xl font-bold text-text placeholder-secondary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" />
             <input type="text" placeholder="3 года" className="w-full h-14 px-5 bg-transparent border border-border rounded-xl text-text placeholder-secondary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" />
             <select className="w-full h-14 px-5 bg-transparent border border-border rounded-xl text-text focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all cursor-pointer">
               <option value="">Есть официальный доход</option>
@@ -107,7 +101,7 @@ export default function Hero() {
                 </div>
                 <div className="flex justify-between items-center mt-1.5">
                   <span className="text-[9px] font-bold text-secondary uppercase tracking-widest font-sans">Скоринг</span>
-                  <span className="text-[10px] font-bold font-mono text-text">A+</span>
+                  <span className="text-[10px] font-bold text-text">A+</span>
                 </div>
               </div>
             </div>
@@ -115,7 +109,7 @@ export default function Hero() {
           
           <div className="mb-8">
             <div className="flex items-baseline gap-2 mb-3">
-              <span className="text-6xl font-mono font-bold text-primary tracking-tighter">96</span><span className="text-sm font-medium text-secondary">баллов из 100</span>
+              <span className="text-6xl font-bold text-primary tracking-tighter">96</span><span className="text-sm font-medium text-secondary">баллов из 100</span>
             </div>
             <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden"><div className="h-full bg-primary w-[96%] rounded-full relative"></div></div>
           </div>
@@ -123,16 +117,16 @@ export default function Hero() {
           <div className="flex flex-col gap-4 mb-8">
             <div className="flex justify-between items-end pb-4 border-b border-border/50">
               <span className="text-sm text-secondary">Реальная ставка</span>
-              {/* ВОТ ЗДЕСЬ ТЕПЕРЬ ЖИВАЯ СТАВКА АЛЬФА-БАНКА! */}
-              <span className="text-lg font-mono font-medium text-text bg-yellow-100 px-2 rounded transition-all">{alfaRate}</span>
+              {/* 🔥 ВОТ НОВЫЙ ДИЗАЙН СТАВКИ 🔥 */}
+              <span className="text-xl font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-md transition-all">{alfaRate}</span>
             </div>
             <div className="flex justify-between items-end pb-4 border-b border-border/50">
               <span className="text-sm text-secondary">Экономия</span>
-              <span className="text-lg font-mono font-bold text-success">34 800 ₽</span>
+              <span className="text-lg font-bold tracking-tight text-emerald-500">34 800 ₽</span>
             </div>
             <div className="flex justify-between items-end pb-2">
               <span className="text-sm text-secondary">Одобрение</span>
-              <span className="text-lg font-mono font-medium text-text">92%</span>
+              <span className="text-lg font-bold text-text">92%</span>
             </div>
           </div>
           
