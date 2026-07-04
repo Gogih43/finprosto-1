@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 
 export default function Hero() {
   const [cbrRate, setCbrRate] = useState<string>("...");
-  const [alfaRate, setAlfaRate] = useState<string>("...");
+  const [bestBankName, setBestBankName] = useState<string>("Загрузка...");
+  const [bestBankRate, setBestBankRate] = useState<string>("...");
 
   useEffect(() => {
     fetch("https://finprosto-backend.onrender.com/api/get_cbr_rate")
@@ -18,19 +19,33 @@ export default function Hero() {
     fetch("https://finprosto-backend.onrender.com/api/get_best_offer")
       .then((res) => res.json())
       .then((data) => {
-        if (data.status === "success") setAlfaRate(data.real_rate + "%");
-        else setAlfaRate("Ошибка");
+        if (data.status === "success") {
+          setBestBankRate(data.real_rate + "%");
+          setBestBankName(data.bank_name); // 🔥 Сохраняем имя настоящего победителя
+        } else {
+          setBestBankRate("Ошибка");
+          setBestBankName("Ошибка");
+        }
       })
-      .catch(() => setAlfaRate("Нет связи"));
+      .catch(() => {
+        setBestBankRate("Нет связи");
+        setBestBankName("Ошибка");
+      });
   }, []);
+
+  // Умный цвет для кружка банка
+  const getBankColor = (name: string) => {
+    if (name.includes('Сбер')) return 'bg-green-500 text-white';
+    if (name.includes('ВТБ')) return 'bg-blue-600 text-white';
+    if (name.includes('Т-Банк')) return 'bg-yellow-400 text-black';
+    return 'bg-red-500 text-white'; // Альфа по умолчанию
+  };
 
   return (
     <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 px-8 py-12 lg:p-16 relative border-b border-border/50">
       
       {/* ЛЕВАЯ ЧАСТЬ */}
       <div className="lg:col-span-6 z-10 flex flex-col justify-center">
-        
-        {/* Блок со ставкой ЦБ */}
         <div className="flex gap-4 mb-6">
           <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-primaryLight text-primary text-[11px] font-bold uppercase tracking-wider shadow-sm">
             <span className="w-2 h-2 rounded-full bg-primary mr-2"></span>
@@ -86,8 +101,11 @@ export default function Hero() {
             <div>
               <p className="text-[10px] font-bold text-secondary uppercase tracking-widest mb-2">Лучшее предложение</p>
               <h3 className="text-2xl font-bold text-text flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center text-[13px] font-bold shadow-sm">А</div>
-                Альфа-Банк
+                {/* 🔥 ИМЯ И ЛОГОТИП ТЕПЕРЬ ДИНАМИЧЕСКИЕ 🔥 */}
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold shadow-sm ${getBankColor(bestBankName)}`}>
+                  {bestBankName !== "Загрузка..." && bestBankName !== "Ошибка" ? bestBankName.charAt(0) : "Б"}
+                </div>
+                {bestBankName}
               </h3>
             </div>
             <div className="flex flex-col items-end">
@@ -117,8 +135,7 @@ export default function Hero() {
           <div className="flex flex-col gap-4 mb-8">
             <div className="flex justify-between items-end pb-4 border-b border-border/50">
               <span className="text-sm text-secondary">Реальная ставка</span>
-              {/* 🔥 ВОТ НОВЫЙ ДИЗАЙН СТАВКИ 🔥 */}
-              <span className="text-xl font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-md transition-all">{alfaRate}</span>
+              <span className="text-xl font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-md transition-all">{bestBankRate}</span>
             </div>
             <div className="flex justify-between items-end pb-4 border-b border-border/50">
               <span className="text-sm text-secondary">Экономия</span>
@@ -132,11 +149,6 @@ export default function Hero() {
           
           <div className="bg-background rounded-xl p-4 border border-border/50">
             <p className="text-[11px] text-secondary leading-relaxed">Мы сравнили предложения банков и показываем ориентировочные условия для большинства клиентов, а не рекламные ставки "от ...".</p>
-          </div>
-          
-          <div className="absolute z-20 -left-6 lg:-left-20 top-1/3 bg-white border border-border shadow-lg rounded-xl p-4 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/></svg></div>
-            <div><p className="text-sm font-semibold text-text whitespace-nowrap">Без скрытых комиссий</p><p className="text-[11px] text-secondary mt-0.5">Честный расчет</p></div>
           </div>
         </div>
       </div>
