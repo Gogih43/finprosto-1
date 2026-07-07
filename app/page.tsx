@@ -1,5 +1,6 @@
 import Header from '../components/Header';
 import Hero from '../components/Hero';
+import Calculator from '../components/Calculator';
 import Results from '../components/Results';
 import Compare from '../components/Compare';
 import Scenarios from '../components/Scenarios';
@@ -13,6 +14,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Calculator />
         <Results />
         <Compare />
         <Scenarios />
