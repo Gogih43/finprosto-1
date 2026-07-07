@@ -1,8 +1,8 @@
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Results from '../components/Results';
-import Compare from '../components/Compare';
-import Calculator from '../components/Calculator'; // 👈 Переместили сюда
+import Calculator from '../components/Calculator'; // 👈 Встал на свое место
+import Compare from '../components/Compare';       // 👈 Кредит или лизинг
 import Scenarios from '../components/Scenarios';
 import Debts from '../components/Debts';
 import Articles from '../components/Articles';
@@ -14,10 +14,15 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Results />  {/* Показываем актуальные ставки */}
-        <Compare />  {/* Сравниваем условия */}
         
-        <Calculator /> {/* 👈 Теперь считаем платеж для конкретного юзера */}
+        {/* 1. Мы уже сравнили рынок */}
+        <Results /> 
+        
+        {/* 2. Калькулятор: считаем платеж */}
+        <Calculator /> 
+        
+        {/* 3. Что лучше: кредит или лизинг */}
+        <Compare /> 
         
         <Scenarios />
         <Debts />
