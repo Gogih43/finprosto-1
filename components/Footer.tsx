@@ -1,51 +1,65 @@
 // components/Footer.tsx
-import Link from 'next/link';
-
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="w-full px-8 py-12 lg:px-16 border-t border-border bg-white">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-12">
-        <div className="lg:col-span-4 pr-4">
-          <div className="text-2xl font-bold tracking-tight text-text uppercase mb-4">
-            <span className="text-primary">FIN</span>ПРОСТО
+    <footer className="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+      <div className="container mx-auto px-4 max-w-7xl">
+        
+        {/* Верхняя часть футера */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div className="md:col-span-2">
+            <span className="text-2xl font-black text-white tracking-tight flex items-center gap-2 mb-4">
+              FIN<span className="text-indigo-500">ПРОСТО</span>
+            </span>
+            <p className="text-sm text-gray-400 max-w-sm">
+              Независимый сервис подбора финансовых услуг. Помогаем сравнивать кредиты, ипотеку и карты, чтобы вы принимали выгодные решения.
+            </p>
           </div>
-          <p className="text-sm text-secondary leading-relaxed mb-6">
-            Независимый финансовый помощник. Переводим банковский язык на человеческий.
+          
+          <div>
+            <h4 className="text-white font-bold mb-4">Навигация</h4>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#calculator" className="hover:text-indigo-400 transition-colors">Калькулятор</a></li>
+              <li><a href="#compare" className="hover:text-indigo-400 transition-colors">Кредит или лизинг</a></li>
+              <li><a href="#articles" className="hover:text-indigo-400 transition-colors">База знаний</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold mb-4">Контакты</h4>
+            <ul className="space-y-2 text-sm">
+              <li><a href="mailto:info@finprosto.ru" className="hover:text-indigo-400 transition-colors">info@finprosto.ru</a></li>
+              <li>г. Москва, ул. Примерная, д. 1</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* ЮРИДИЧЕСКИЙ БЛОК (Самое важное для модерации CPA) */}
+        <div className="border-t border-gray-800 pt-8 mt-8 text-xs text-gray-500 leading-relaxed space-y-4">
+          <p>
+            <strong>Внимание:</strong> Проект FINПРОСТО не является финансовой организацией, банком или кредитором. 
+            Сайт носит исключительно информационный характер и не осуществляет выдачу кредитов или микрозаймов. 
+            Мы не собираем и не храним персональные данные пользователей. Все решения о выдаче кредитов принимаются 
+            непосредственно кредитными организациями.
+          </p>
+          <p>
+            Информация, размещенная на сайте, не является публичной офертой, определяемой положениями 
+            Статьи 437 Гражданского кодекса Российской Федерации. Финансовые условия (процентные ставки, 
+            сроки, суммы) могут быть изменены банками без предварительного уведомления. Точные условия 
+            уточняйте на официальных сайтах кредитных организаций.
           </p>
         </div>
-        <div className="lg:col-span-2 lg:col-start-6">
-          <p className="text-sm font-bold text-text mb-4">Услуги</p>
-          <ul className="space-y-3">
-            <li><Link href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Кредит наличными</Link></li>
-            <li><Link href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Автокредит</Link></li>
-            <li><Link href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Ипотека</Link></li>
-            <li><Link href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Лизинг авто</Link></li>
-          </ul>
+
+        {/* Копирайт */}
+        <div className="flex flex-col md:flex-row justify-between items-center mt-8 pt-4 border-t border-gray-800 text-xs">
+          <p>&copy; {currentYear} FINПРОСТО. Все права защищены.</p>
+          <div className="flex space-x-4 mt-4 md:mt-0">
+            <a href="#" className="hover:text-white transition-colors">Политика конфиденциальности</a>
+            <a href="#" className="hover:text-white transition-colors">Пользовательское соглашение</a>
+          </div>
         </div>
-        <div className="lg:col-span-2">
-          <p className="text-sm font-bold text-text mb-4">Решения</p>
-          <ul className="space-y-3">
-            <li><Link href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Рефинансирование</Link></li>
-            <li><Link href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Реструктуризация</Link></li>
-            <li><Link href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Списание долгов</Link></li>
-          </ul>
-        </div>
-        <div className="lg:col-span-2">
-          <p className="text-sm font-bold text-text mb-4">Компания</p>
-          <ul className="space-y-3">
-            <li><Link href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">О нас</Link></li>
-            <li><Link href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">База знаний</Link></li>
-            <li><Link href="#" className="text-[13px] text-secondary hover:text-primary transition-colors">Контакты</Link></li>
-          </ul>
-        </div>
-      </div>
-      <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-[11px] text-secondary leading-relaxed max-w-3xl">
-          © 2026 FINПРОСТО. Не является публичной офертой. Проект не является банком и не выдает кредиты. Анализ рынка на основе открытых данных ЦБ РФ.
-        </p>
-        <div className="flex gap-4">
-          <Link href="#" className="text-[11px] text-secondary hover:text-text transition-colors whitespace-nowrap">Политика конфиденциальности</Link>
-        </div>
+
       </div>
     </footer>
   );
