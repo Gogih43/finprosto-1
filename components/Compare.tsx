@@ -41,7 +41,6 @@ export default function Compare() {
   return (
     <section className="py-20 bg-gray-50" id="compare">
       <div className="container mx-auto px-4 max-w-5xl">
-        
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-6">
             А что, если изменить тактику?
@@ -62,9 +61,7 @@ export default function Compare() {
                 key={num}
                 onClick={() => setActiveTab(num)}
                 className={`p-6 rounded-2xl cursor-pointer transition-all border-2 ${
-                  activeTab === num 
-                    ? 'border-indigo-600 bg-white shadow-lg scale-[1.02]' 
-                    : 'border-transparent bg-gray-100 hover:bg-gray-200'
+                  activeTab === num ? 'border-indigo-600 bg-white shadow-lg scale-[1.02]' : 'border-transparent bg-gray-100 hover:bg-gray-200'
                 }`}
               >
                 <div className="text-sm font-bold text-indigo-600 mb-1">{tactics[num].subtitle}</div>
@@ -92,7 +89,6 @@ export default function Compare() {
             </button>
           </div>
         </div>
-
       </div>
     </section>
   );
