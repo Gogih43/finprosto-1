@@ -24,7 +24,7 @@ export default function Articles() {
               key={article.id} 
               className="bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col"
             >
-              <div className={`h-48 w-full bg-gradient-to-br ${article.imageGrad} relative overflow-hidden`}>
+              <div className="h-48 w-full relative overflow-hidden" style={{ background: article.imageGrad }}>
                 <div className="absolute top-4 left-4">
                   <span className="bg-white/90 backdrop-blur-sm text-gray-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
                     {article.category}

@@ -13,7 +13,7 @@ export default function ArticlePage({ params }: { params: { id: string } }) {
           &larr; На главную
         </Link>
         <article className="bg-white rounded-3xl shadow-xl overflow-hidden">
-          <div className={`h-64 w-full bg-gradient-to-br ${article.imageGrad} relative`}>
+          <div className="h-64 w-full relative" style={{ background: article.imageGrad }}>
             <div className="absolute top-6 left-6">
               <span className="bg-white text-gray-900 text-sm font-bold px-4 py-2 rounded-full uppercase">{article.category}</span>
             </div>

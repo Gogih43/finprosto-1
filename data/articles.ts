@@ -6,7 +6,7 @@ export const articlesData = [
     category: "Лайфхаки",
     readTime: "5 мин чтения",
     date: "12 мая 2024",
-    imageGrad: "from-blue-500 to-indigo-600",
+    imageGrad: "linear-gradient(to bottom right, #3b82f6, #4f46e5)",
     content: `
       Рефинансирование (или перекредитование) — это оформление нового кредита для погашения одного или нескольких старых. Звучит как волшебная таблетка, но так ли это на самом деле?
       
@@ -28,7 +28,7 @@ export const articlesData = [
     category: "База знаний",
     readTime: "7 мин чтения",
     date: "08 мая 2024",
-    imageGrad: "from-emerald-500 to-teal-600",
+    imageGrad: "linear-gradient(to bottom right, #10b981, #0d9488)",
     content: `
       Вам отказывают в кредитах даже при хорошей зарплате? Скорее всего, проблема в вашем кредитном рейтинге (скоринговом балле).
       
@@ -48,7 +48,7 @@ export const articlesData = [
     category: "Ипотека",
     readTime: "6 мин чтения",
     date: "02 мая 2024",
-    imageGrad: "from-orange-400 to-red-500",
+    imageGrad: "linear-gradient(to bottom right, #fb923c, #ef4444)",
     content: `
       Главная дилемма каждого ипотечника: появились свободные 50 000 рублей — куда их направить? В мобильном приложении банка всегда есть выбор: уменьшить срок кредита или уменьшить ежемесячный платеж.
 
@@ -68,7 +68,7 @@ export const articlesData = [
     category: "Долги",
     readTime: "4 мин чтения",
     date: "28 апреля 2024",
-    imageGrad: "from-purple-500 to-pink-600",
+    imageGrad: "linear-gradient(to bottom right, #a855f7, #db2777)",
     content: `
       Долги в МФО растут со скоростью 292% годовых (0.8% в день). Это финансовая черная дыра. Решение перекрыть эти долги обычным потребительским кредитом под 20% годовых — абсолютно правильное. Но есть нюансы.
 
