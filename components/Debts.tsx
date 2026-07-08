@@ -1,25 +1,100 @@
+'use client';
+import { useState } from 'react';
+
 export default function Debts() {
+  const [step, setStep] = useState(1);
+  const [debtAmount, setDebtAmount] = useState(500000);
+
+  // Ссылка на WhatsApp юриста (сейчас заглушка, потом вставишь номер реального юриста)
+  // Текст заранее заготовлен, чтобы юрист понял, что клиент пришел от тебя.
+  const whatsappLink = `https://wa.me/79990000000?text=Здравствуйте! Я прошел тест на сайте FINПРОСТО. Мой долг около ${debtAmount} руб. Хочу узнать про бесплатное банкротство.`;
+
   return (
-    <section className="px-8 py-16 lg:px-16 border-b border-border/50">
-      <div className="max-w-2xl mb-12 lg:mb-16">
-        <h2 className="text-4xl lg:text-[48px] font-bold leading-tight tracking-tight text-text">Уже есть кредиты?</h2>
-        <p className="mt-4 text-lg text-secondary leading-relaxed">Финансовые ситуации бывают разными. Без паники и штрафов. Выберите ваше текущее состояние.</p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-        <div className="bg-white rounded-3xl p-8 border border-border shadow-soft flex flex-col">
-          <div className="w-14 h-14 rounded-2xl bg-green-50 border border-green-100 flex items-center justify-center mb-6"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12 Q 8 4 12 12 T 21 12" /></svg></div>
-          <div className="mb-8 flex-1"><h3 className="text-2xl font-bold text-text mb-3">Плачу вовремя, хочу условия лучше</h3><p className="text-[15px] text-secondary">Снизим процентную ставку или объединим кредиты.</p></div>
-          <button className="w-full py-4 px-6 bg-primaryLight text-primary hover:bg-primary hover:text-white rounded-xl text-[15px] font-bold transition-colors">Рефинансирование</button>
+    <section className="py-20 bg-gray-900 text-white relative overflow-hidden" id="bankruptcy">
+      {/* Декоративный фон */}
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+      <div className="absolute -top-24 -right-24 w-96 h-96 bg-red-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+
+      <div className="container mx-auto px-4 max-w-4xl relative z-10">
+        <div className="text-center mb-12">
+          <span className="bg-red-500/20 text-red-400 font-bold px-4 py-2 rounded-full text-sm uppercase tracking-wider mb-4 inline-block">
+            Федеральный закон №127-ФЗ
+          </span>
+          <h2 className="text-3xl md:text-5xl font-black mb-4">
+            Не справляетесь с кредитами?
+          </h2>
+          <p className="text-xl text-gray-400">
+            Государство позволяет законно списать долги. Пройдите тест за 1 минуту и узнайте, подходите ли вы под процедуру банкротства.
+          </p>
         </div>
-        <div className="bg-white rounded-3xl p-8 border border-border shadow-soft flex flex-col">
-          <div className="w-14 h-14 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center mb-6"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D97706" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12 L 8 5 L 12 19 L 16 8 L 21 12" /></svg></div>
-          <div className="mb-8 flex-1"><h3 className="text-2xl font-bold text-text mb-3">Платить стало тяжело, есть просрочки</h3><p className="text-[15px] text-secondary">Договоримся об отсрочке или изменении графика.</p></div>
-          <button className="w-full py-4 px-6 bg-white border-2 border-border text-text hover:border-gray-400 rounded-xl text-[15px] font-bold transition-colors">Реструктуризация</button>
-        </div>
-        <div className="bg-slate-50/80 rounded-3xl p-8 border border-border shadow-soft flex flex-col">
-          <div className="w-14 h-14 rounded-2xl bg-slate-200/50 border border-slate-300/50 flex items-center justify-center mb-6"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12 L 10 12 M 14 12 L 21 12 M 10 8 L 14 16" /></svg></div>
-          <div className="mb-8 flex-1"><h3 className="text-2xl font-bold text-text mb-3">Долги растут, платить больше не могу</h3><p className="text-[15px] text-secondary">Законно спишем долги через арбитражный суд или МФЦ.</p></div>
-          <button className="w-full py-4 px-6 bg-slate-800 text-white hover:bg-slate-700 rounded-xl text-[15px] font-bold transition-colors">Законное списание</button>
+
+        {/* Интерактивный Квиз */}
+        <div className="bg-white text-gray-900 rounded-3xl p-8 md:p-12 shadow-2xl max-w-2xl mx-auto">
+          
+          {step === 1 && (
+            <div className="animate-fade-in">
+              <h3 className="text-2xl font-bold mb-6 text-center">Какая у вас общая сумма долгов?</h3>
+              <p className="text-center text-gray-500 mb-8">(включая кредиты, МФО, ЖКХ и налоги)</p>
+              
+              <div className="text-4xl font-black text-indigo-600 text-center mb-8">
+                {debtAmount.toLocaleString('ru-RU')} ₽
+              </div>
+              
+              <input 
+                type="range" min="50000" max="3000000" step="50000" 
+                value={debtAmount} onChange={(e) => setDebtAmount(Number(e.target.value))} 
+                className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 mb-10" 
+              />
+              
+              <button 
+                onClick={() => setStep(2)}
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl text-lg transition-colors"
+              >
+                Далее &rarr;
+              </button>
+            </div>
+          )}
+
+          {step === 2 && (
+            <div className="animate-fade-in">
+              <h3 className="text-2xl font-bold mb-8 text-center">Есть ли у вас просрочки по платежам?</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onClick={() => setStep(3)} className="border-2 border-gray-200 hover:border-indigo-600 hover:bg-indigo-50 font-bold py-4 rounded-xl text-lg transition-all">
+                  Да, есть
+                </button>
+                <button onClick={() => setStep(3)} className="border-2 border-gray-200 hover:border-indigo-600 hover:bg-indigo-50 font-bold py-4 rounded-xl text-lg transition-all">
+                  Пока нет, но скоро будут
+                </button>
+              </div>
+            </div>
+          )}
+
+          {step === 3 && (
+            <div className="animate-fade-in text-center">
+              <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Предварительно: Вы подходите под 127-ФЗ</h3>
+              <p className="text-gray-600 mb-8">
+                Закон позволяет вам полностью списать долг в размере <b>{debtAmount.toLocaleString('ru-RU')} ₽</b>. <br/><br/>
+                Мы не собираем ваши данные на сайте. Нажмите кнопку ниже, чтобы перейти в защищенный чат WhatsApp с юристом. Он изучит вашу ситуацию бесплатно.
+              </p>
+              
+              <a 
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-xl text-lg transition-colors shadow-lg hover:shadow-green-500/30"
+              >
+                Написать юристу в WhatsApp
+              </a>
+              
+              <button onClick={() => setStep(1)} className="mt-6 text-sm text-gray-400 hover:text-gray-600 underline">
+                Пройти тест заново
+              </button>
+            </div>
+          )}
+
         </div>
       </div>
     </section>
