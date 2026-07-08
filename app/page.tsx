@@ -3,7 +3,6 @@ import Hero from '../components/Hero';
 import Calculator from '../components/Calculator';
 import Tactics from '../components/Tactics'; // 👈 Добавили Симулятор тактик
 import Compare from '../components/Compare'; // 👈 Наш Лизинг
-import Scenarios from '../components/Scenarios';
 import Articles from '../components/Articles';
 import Footer from '../components/Footer';
 
