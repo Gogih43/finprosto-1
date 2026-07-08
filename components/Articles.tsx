@@ -1,43 +1,107 @@
+'use client';
+
 export default function Articles() {
+  // Массив с нашими экспертными статьями (пока захардкожен, позже можно вынести в БД)
+  const articles = [
+    {
+      id: 1,
+      title: "Рефинансирование в 2024: Когда действительно выгодно объединять кредиты?",
+      excerpt: "Разбираем на реальных примерах, в каких случаях рефинансирование спасет ваш бюджет, а когда — загонит в еще большие долги.",
+      category: "Лайфхаки",
+      readTime: "5 мин чтения",
+      date: "12 мая 2024",
+      imageGrad: "from-blue-500 to-indigo-600"
+    },
+    {
+      id: 2,
+      title: "Кредитная история: Как узнать свой рейтинг и поднять его за 3 месяца",
+      excerpt: "Пошаговая инструкция по легальному улучшению скорингового балла. Что делать, если банки постоянно отказывают?",
+      category: "База знаний",
+      readTime: "7 мин чтения",
+      date: "08 мая 2024",
+      imageGrad: "from-emerald-500 to-teal-600"
+    },
+    {
+      id: 3,
+      title: "Срок или платеж? Как выгоднее гасить ипотеку досрочно",
+      excerpt: "Математический расчет досрочного погашения. Развеиваем главный миф ипотечников с помощью кредитного калькулятора.",
+      category: "Ипотека",
+      readTime: "6 мин чтения",
+      date: "02 мая 2024",
+      imageGrad: "from-orange-400 to-red-500"
+    },
+    {
+      id: 4,
+      title: "Стоит ли брать кредит на закрытие микрозаймов (МФО)?",
+      excerpt: "Как выбраться из долговой ямы микрокредитных организаций и почему обычные банки неохотно дают деньги должникам МФО.",
+      category: "Долги",
+      readTime: "4 мин чтения",
+      date: "28 апреля 2024",
+      imageGrad: "from-purple-500 to-pink-600"
+    }
+  ];
+
   return (
-    <section className="px-8 py-16 lg:px-16 lg:py-24">
-      <div className="flex items-end justify-between mb-12">
-        <div className="max-w-2xl"><h2 className="text-4xl lg:text-[48px] font-bold leading-tight tracking-tight text-text">База знаний</h2><p className="mt-4 text-lg text-secondary leading-relaxed">Помогаем разобраться в сложных терминах. Без воды.</p></div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <a href="#" className="group block">
-          <div className="w-full h-48 rounded-2xl mb-5 overflow-hidden relative border border-border bg-blue-50/50">
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-400/30 rounded-full blur-3xl transition-transform group-hover:scale-110"></div>
-            <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-primary/20 rounded-full blur-2xl"></div>
+    <section className="py-20 bg-white" id="articles">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="flex justify-between items-end mb-12">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+              Финансовая грамотность
+            </h2>
+            <p className="text-lg text-gray-500 max-w-2xl">
+              Наши эксперты разбирают сложные финансовые вопросы простым языком. Помогаем экономить деньги и не попадать в ловушки банков.
+            </p>
           </div>
-          <p className="text-[11px] font-bold text-primary uppercase tracking-widest mb-2">Аналитика</p>
-          <h3 className="text-lg font-bold text-text mb-3 leading-snug group-hover:text-primary transition-colors">Кредит или лизинг: что выгоднее?</h3>
-          <p className="text-[12px] text-secondary font-mono bg-slate-100 inline-block px-2 py-1 rounded">Читать 4 мин.</p>
-        </a>
-        <a href="#" className="group block">
-          <div className="w-full h-48 rounded-2xl mb-5 overflow-hidden relative border border-border bg-slate-50 flex items-center justify-center">
-            <div className="absolute w-full h-full opacity-50" style={{ backgroundImage: 'radial-gradient(#CBD5E1 1px, transparent 1px)', backgroundSize: '16px 16px' }}></div>
-          </div>
-          <p className="text-[11px] font-bold text-secondary uppercase tracking-widest mb-2">Инструкция</p>
-          <h3 className="text-lg font-bold text-text mb-3 leading-snug group-hover:text-primary transition-colors">Как банки считают ваш доход: ПДН</h3>
-          <p className="text-[12px] text-secondary font-mono bg-slate-100 inline-block px-2 py-1 rounded">Читать 6 мин.</p>
-        </a>
-        <a href="#" className="group block">
-          <div className="w-full h-48 rounded-2xl mb-5 overflow-hidden relative border border-border bg-emerald-50/30">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-emerald-400/20 rounded-full blur-3xl transition-transform group-hover:scale-125"></div>
-          </div>
-          <p className="text-[11px] font-bold text-success uppercase tracking-widest mb-2">Лайфхак</p>
-          <h3 className="text-lg font-bold text-text mb-3 leading-snug group-hover:text-primary transition-colors">Как уменьшить переплату</h3>
-          <p className="text-[12px] text-secondary font-mono bg-slate-100 inline-block px-2 py-1 rounded">Читать 3 мин.</p>
-        </a>
-        <a href="#" className="group block">
-          <div className="w-full h-48 rounded-2xl mb-5 overflow-hidden relative border border-border bg-orange-50/30">
-            <div className="absolute -bottom-8 right-0 w-40 h-40 bg-orange-400/20 rounded-full blur-2xl transition-transform group-hover:-translate-y-4"></div>
-          </div>
-          <p className="text-[11px] font-bold text-secondary uppercase tracking-widest mb-2">Разбор</p>
-          <h3 className="text-lg font-bold text-text mb-3 leading-snug group-hover:text-primary transition-colors">Стоит ли делать рефинансирование?</h3>
-          <p className="text-[12px] text-secondary font-mono bg-slate-100 inline-block px-2 py-1 rounded">Читать 5 мин.</p>
-        </a>
+          <button className="hidden md:block text-indigo-600 font-semibold hover:text-indigo-800 transition-colors">
+            Все статьи &rarr;
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {articles.map((article) => (
+            <article 
+              key={article.id} 
+              className="bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer flex flex-col"
+            >
+              {/* Имитация картинки с помощью красивого градиента (чтобы не было битых ссылок на фото) */}
+              <div className={`h-48 w-full bg-gradient-to-br ${article.imageGrad} relative overflow-hidden`}>
+                <div className="absolute top-4 left-4">
+                  <span className="bg-white/90 backdrop-blur-sm text-gray-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                    {article.category}
+                  </span>
+                </div>
+                {/* Легкий декоративный паттерн */}
+                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-white opacity-20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+              </div>
+
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="flex items-center justify-between text-xs text-gray-400 font-medium mb-3">
+                  <span>{article.date}</span>
+                  <span>{article.readTime}</span>
+                </div>
+                
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors line-clamp-3">
+                  {article.title}
+                </h3>
+                
+                <p className="text-gray-600 text-sm mb-6 line-clamp-3 flex-grow">
+                  {article.excerpt}
+                </p>
+                
+                <div className="mt-auto pt-4 border-t border-gray-200">
+                  <span className="text-indigo-600 font-semibold text-sm group-hover:underline">
+                    Читать полностью
+                  </span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+        
+        <button className="mt-10 w-full md:hidden bg-gray-100 text-gray-800 font-bold py-4 rounded-xl hover:bg-gray-200 transition-colors">
+          Все статьи
+        </button>
       </div>
     </section>
   );
