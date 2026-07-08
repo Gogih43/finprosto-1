@@ -1,9 +1,34 @@
 'use client';
-
 import { useState, useEffect } from 'react';
 
+// Умный склонятор для русского языка (1 год, 2 года, 5 лет)
+const pluralizeYears = (count: number) => {
+  const mod10 = count % 10;
+  const mod100 = count % 100;
+  if (mod100 >= 11 && mod100 <= 14) return 'лет';
+  if (mod10 === 1) return 'год';
+  if (mod10 >= 2 && mod10 <= 4) return 'года';
+  return 'лет';
+};
+
+// Функция для получения ссылки (замени на свои рефералки, где нужно)
+const getBankLink = (bankName: string) => {
+  if (bankName.includes("Альфа")) return "https://alfabank.ru/";
+  if (bankName.includes("Т-Банк") || bankName.includes("Тинькофф")) return "https://tbank.ru/";
+  if (bankName.includes("Сбер")) return "https://sberbank.ru/";
+  if (bankName.includes("Газпром")) return "https://gazprombank.ru/";
+  
+  if (bankName.includes("ВТБ")) return "https://vtb.ru/personal/kredit/nalichnymi/";
+  if (bankName.includes("ПСБ")) return "https://psbank.ru/Personal/Loans";
+  if (bankName.includes("Россельхоз")) return "https://rshb.ru/natural/loans/";
+  if (bankName.includes("Совком")) return "https://sovcombank.ru/credits/";
+  if (bankName.includes("Уралсиб")) return "https://uralsib.ru/kredity";
+  
+  return `https://yandex.ru/search/?text=взять+кредит+${bankName}`;
+};
+
 export default function Calculator() {
-  const [banks, setBanks] = useState([]);
+  const [banks, setBanks] = useState<any[]>([]);
   const [amount, setAmount] = useState(500000);
   const [months, setMonths] = useState(60);
   const [loading, setLoading] = useState(true);
@@ -23,16 +48,13 @@ export default function Calculator() {
       });
   }, []);
 
-  const calculatePayment = (rate) => {
+  const calculatePayment = (rate: number) => {
     const monthlyRate = rate / 100 / 12;
-    const payment =
-      amount *
-      (monthlyRate * Math.pow(1 + monthlyRate, months)) /
-      (Math.pow(1 + monthlyRate, months) - 1);
+    const payment = amount * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
     return Math.round(payment);
   };
 
-  const formatMoney = (sum) => sum.toLocaleString('ru-RU') + ' ₽';
+  const formatMoney = (sum: number) => sum.toLocaleString('ru-RU') + ' ₽';
 
   if (loading) {
     return (
@@ -48,7 +70,6 @@ export default function Calculator() {
         <div className="max-w-5xl mx-auto bg-white p-6 md:p-10 rounded-3xl shadow-xl text-gray-800">
           <h2 className="text-3xl font-extrabold text-center mb-8">Калькулятор кредита</h2>
 
-          {/* БЛОК ПОЛЗУНКОВ */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
             <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
               <label className="block text-sm font-semibold text-gray-500 mb-2">Сумма кредита</label>
@@ -63,7 +84,9 @@ export default function Calculator() {
 
             <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
               <label className="block text-sm font-semibold text-gray-500 mb-2">Срок кредита</label>
-              <div className="text-3xl font-bold text-indigo-600 mb-4">{months / 12} лет ({months} мес.)</div>
+              <div className="text-3xl font-bold text-indigo-600 mb-4">
+                {months / 12} {pluralizeYears(months / 12)} <span className="text-lg text-gray-400 font-medium">({months} мес.)</span>
+              </div>
               <input 
                 type="range" min="12" max="84" step="12" 
                 value={months} onChange={(e) => setMonths(Number(e.target.value))} 
@@ -73,11 +96,12 @@ export default function Calculator() {
             </div>
           </div>
 
-          {/* РЕЗУЛЬТАТЫ ПО БАНКАМ */}
           <h3 className="text-xl font-bold mb-4">Предложения банков</h3>
           <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
             {banks.map((bank, index) => {
               const payment = calculatePayment(bank.rate);
+              const checkoutLink = getBankLink(bank.name);
+              
               return (
                 <div key={index} className="flex flex-col md:flex-row items-center justify-between p-5 bg-white border border-gray-200 shadow-sm rounded-2xl hover:shadow-md transition-all hover:border-indigo-300">
                   <div className="flex-1 w-full mb-4 md:mb-0">
@@ -91,9 +115,14 @@ export default function Calculator() {
                     <div className="text-sm text-gray-500 mb-1">Платеж в месяц</div>
                     <div className="text-2xl font-black text-gray-900">{formatMoney(payment)}</div>
                   </div>
-                  <button className="w-full md:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl transition-colors shadow-sm hover:shadow-lg">
+                  <a 
+                    href={checkoutLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-full md:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl transition-colors shadow-sm hover:shadow-lg text-center block"
+                  >
                     Оформить
-                  </button>
+                  </a>
                 </div>
               );
             })}

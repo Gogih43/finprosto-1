@@ -1,172 +1,98 @@
-"use client";
-
+'use client';
 import { useState } from 'react';
 
 export default function Compare() {
-  // Состояние переключателя: false = Физлицо, true = Бизнес
-  const [isBusiness, setIsBusiness] = useState(true);
+  const [activeTab, setActiveTab] = useState(2);
 
-  // Данные для правой карточки (Лизинг), которые меняются в зависимости от переключателя
-  const leasingData = isBusiness ? {
-    badge: "Выгодно для ИП/ООО",
-    badgeColor: "bg-blue-100 text-primary",
-    desc: "Аренда с правом выкупа. Машина на балансе.",
-    discount: "- 250 000 ₽",
-    taxes: "- 1 156 000 ₽",
-    taxesLabel: "Возврат НДС и налогов",
-    total: "2 314 000 ₽",
-    totalColor: "text-primary",
-    barWidth: "60%"
-  } : {
-    badge: "Невыгодно",
-    badgeColor: "bg-red-100 text-red-600",
-    desc: "Для физлиц нет налоговых вычетов. Переплата выше.",
-    discount: "—",
-    taxes: "—",
-    taxesLabel: "Возврат НДС и налогов",
-    total: "4 220 000 ₽",
-    totalColor: "text-red-500",
-    barWidth: "90%" // Бар будет почти полным, показывая, что это дорого
+  const tactics: Record<number, any> = {
+    1: {
+      title: "Сделать рефинансирование",
+      subtitle: "Ставка уменьшится на 2%",
+      savings: "+ 124 000 ₽",
+      term: "Без изменений",
+      color: "bg-blue-500",
+      desc: "Идеально, если ставки на рынке упали. Вы просто переводите долг в другой банк. Платеж становится меньше, а срок остается прежним."
+    },
+    2: {
+      title: "Ежемесячное досрочное погашение",
+      subtitle: "Платить на 15 000 ₽ больше",
+      savings: "+ 412 000 ₽",
+      term: "Меньше на 1 г. 8 мес.",
+      color: "bg-green-500",
+      desc: "Самая выгодная стратегия. Направляя свободные деньги прямо в тело долга, вы отсекаете самые дорогие проценты банка."
+    },
+    3: {
+      title: "Увеличить срок на 2 года",
+      subtitle: "Снизить платеж на 12 000 ₽",
+      savings: "- 185 000 ₽ (переплата)",
+      term: "Плюс 2 года",
+      color: "bg-orange-500",
+      desc: "Стратегия безопасности. Если упали доходы, лучше растянуть срок и снизить ежемесячный платеж, чтобы не допустить просрочек."
+    }
+  };
+
+  const scrollToCalculator = () => {
+    const calc = document.getElementById('calculator');
+    if (calc) {
+      calc.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <section className="px-8 py-16 lg:px-16 border-b border-border/50 transition-all duration-300">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
-        <div className="max-w-xl">
-          <h2 className="text-4xl lg:text-[48px] font-bold leading-tight tracking-tight text-text">
-            Что выгоднее: автокредит или лизинг?
+    <section className="py-20 bg-gray-50" id="compare">
+      <div className="container mx-auto px-4 max-w-5xl">
+        
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-6">
+            А что, если изменить тактику?
           </h2>
-          <p className="mt-4 text-lg text-secondary leading-relaxed">
-            Считаем реальные деньги на примере авто за 3 000 000 ₽.
-          </p>
+          <div className="bg-indigo-50 border border-indigo-100 rounded-2xl p-4 max-w-3xl mx-auto inline-block">
+            <p className="text-lg text-indigo-900">
+              Расчеты приведены для базового кейса: <b>кредит 1 500 000 ₽</b> на <b>5 лет</b> по ставке <b>20% годовых</b>. 
+              Посмотрите, как изменение стратегии влияет на итоговую переплату.
+            </p>
+          </div>
         </div>
-        
-        {/* ИНТЕРАКТИВНЫЙ ПЕРЕКЛЮЧАТЕЛЬ */}
-        <div className="flex items-center bg-slate-200/60 p-1 rounded-xl shrink-0 relative">
-          {/* Ползунок (Фон, который ездит) */}
-          <div 
-            className={`absolute top-1 bottom-1 w-1/2 bg-white rounded-lg shadow-sm ring-1 ring-black/5 transition-all duration-300 ease-out ${
-              isBusiness ? 'translate-x-full' : 'translate-x-0'
-            }`}
-          ></div>
-          
-          <button 
-            onClick={() => setIsBusiness(false)}
-            className={`w-1/2 px-6 py-2.5 rounded-lg text-sm font-bold relative z-10 transition-colors duration-300 ${
-              !isBusiness ? 'text-text' : 'text-secondary hover:text-text'
-            }`}
-          >
-            Для физлица
-          </button>
-          <button 
-            onClick={() => setIsBusiness(true)}
-            className={`w-1/2 px-6 py-2.5 rounded-lg text-sm font-bold relative z-10 transition-colors duration-300 ${
-              isBusiness ? 'text-text' : 'text-secondary hover:text-text'
-            }`}
-          >
-            Для бизнеса (ИП / ООО)
-          </button>
-        </div>
-      </div>
 
-      <div className="relative bg-white rounded-[2rem] shadow-app border border-border overflow-hidden">
-        <div className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-border rounded-full items-center justify-center text-xs font-bold text-secondary shadow-sm z-20">VS</div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-border">
-          
-          {/* ЛЕВАЯ ЧАСТЬ: АВТОКРЕДИТ (Статичная) */}
-          <div className="p-8 lg:p-12 bg-slate-50/50">
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
+          <div className="w-full lg:w-1/2 space-y-4">
+            <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Выберите сценарий</h3>
+            {[1, 2, 3].map((num) => (
+              <div 
+                key={num}
+                onClick={() => setActiveTab(num)}
+                className={`p-6 rounded-2xl cursor-pointer transition-all border-2 ${
+                  activeTab === num 
+                    ? 'border-indigo-600 bg-white shadow-lg scale-[1.02]' 
+                    : 'border-transparent bg-gray-100 hover:bg-gray-200'
+                }`}
+              >
+                <div className="text-sm font-bold text-indigo-600 mb-1">{tactics[num].subtitle}</div>
+                <div className="text-xl font-bold text-gray-900">{tactics[num].title}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="w-full lg:w-1/2 bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 relative overflow-hidden">
+            <div className={`absolute top-0 left-0 right-0 h-2 ${tactics[activeTab].color} transition-colors duration-500`}></div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-8">Результат стратегии</h3>
             <div className="mb-8">
-              <h3 className="text-2xl font-bold text-text mb-2">Автокредит</h3>
-              <p className="text-sm text-secondary">Классический кредит наличными.</p>
-            </div>
-            <div className="space-y-4 mb-10 font-mono text-sm">
-              <div className="flex justify-between items-end pb-3 border-b border-border/60"><span className="text-secondary font-sans">Стоимость авто</span><span className="text-text font-medium">3 000 000 ₽</span></div>
-              <div className="flex justify-between items-end pb-3 border-b border-border/60"><span className="text-secondary font-sans">Скидка от салона</span><span className="text-secondary">—</span></div>
-              <div className="flex justify-between items-end pb-3 border-b border-border/60"><span className="text-secondary font-sans">Переплата банку</span><span className="text-red-500 font-medium">+ 850 000 ₽</span></div>
-              <div className="flex justify-between items-end pb-3 border-b border-border/60"><span className="text-secondary font-sans">Возврат налогов</span><span className="text-secondary">—</span></div>
-            </div>
-            <div className="mt-8">
-              <p className="text-[11px] font-bold text-secondary uppercase tracking-widest mb-3 font-sans">Итоговые расходы</p>
-              <div className="flex items-end justify-between mb-2"><span className="text-3xl font-mono font-bold text-text">3 850 000 ₽</span></div>
-              <div className="w-full h-3 bg-slate-200 rounded-full overflow-hidden flex"><div className="h-full bg-slate-400 w-[78%]"></div><div className="h-full bg-red-400 w-[22%]"></div></div>
-            </div>
-          </div>
-
-          {/* ПРАВАЯ ЧАСТЬ: ЛИЗИНГ (Динамическая) */}
-          <div className="p-8 lg:p-12 relative overflow-hidden transition-colors duration-500">
-            {/* Меняем фон в зависимости от выгоды */}
-            <div className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ${isBusiness ? 'bg-gradient-to-br from-blue-50/50 to-transparent' : 'bg-gradient-to-br from-red-50/50 to-transparent'}`}></div>
-            
-            <div className="relative z-10">
-              <div className="mb-8">
-                <div className="flex items-center gap-3 mb-2">
-                  <h3 className={`text-2xl font-bold transition-colors duration-300 ${isBusiness ? 'text-primary' : 'text-red-500'}`}>Лизинг</h3>
-                  <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider transition-colors duration-300 ${leasingData.badgeColor}`}>
-                    {leasingData.badge}
-                  </span>
-                </div>
-                <p className="text-sm text-secondary h-5">{leasingData.desc}</p>
-              </div>
-              
-              <div className="space-y-4 mb-10 font-mono text-sm">
-                <div className="flex justify-between items-end pb-3 border-b border-border/60">
-                  <span className="text-secondary font-sans">Стоимость авто</span>
-                  <span className="text-text font-medium">3 000 000 ₽</span>
-                </div>
-                <div className="flex justify-between items-end pb-3 border-b border-border/60">
-                  <span className="text-secondary font-sans">Корпоративная скидка</span>
-                  <span className={`font-medium transition-colors duration-300 ${isBusiness ? 'text-success' : 'text-secondary'}`}>{leasingData.discount}</span>
-                </div>
-                <div className="flex justify-between items-end pb-3 border-b border-border/60">
-                  <span className="text-secondary font-sans">Переплата лизинговой</span>
-                  <span className="text-red-500 font-medium">{isBusiness ? '+ 720 000 ₽' : '+ 1 220 000 ₽'}</span>
-                </div>
-                <div className="flex justify-between items-end pb-3 border-b border-border/60">
-                  <span className="text-secondary font-sans">{leasingData.taxesLabel}</span>
-                  <span className={`font-bold transition-colors duration-300 ${isBusiness ? 'text-success' : 'text-secondary'}`}>{leasingData.taxes}</span>
-                </div>
-              </div>
-              
-              <div className="mt-8">
-                <p className={`text-[11px] font-bold uppercase tracking-widest mb-3 font-sans transition-colors duration-300 ${isBusiness ? 'text-primary' : 'text-red-500'}`}>
-                  Итоговые расходы
-                </p>
-                <div className="flex items-end justify-between mb-2">
-                  <span className={`text-3xl font-mono font-bold transition-colors duration-300 ${leasingData.totalColor}`}>{leasingData.total}</span>
-                </div>
-                <div className="w-full h-3 bg-slate-100 rounded-full flex items-center relative overflow-hidden">
-                  <div 
-                    className={`h-full rounded-full transition-all duration-700 ease-out ${isBusiness ? 'bg-primary' : 'bg-red-400'}`} 
-                    style={{ width: leasingData.barWidth }}
-                  ></div>
-                </div>
+              <div className="text-sm font-bold text-gray-400 uppercase mb-2">Финансовый итог</div>
+              <div className={`text-4xl md:text-5xl font-black ${activeTab === 3 ? 'text-orange-500' : 'text-green-500'}`}>
+                {tactics[activeTab].savings}
               </div>
             </div>
-          </div>
-
-        </div>
-
-        {/* БЛОК ВЫВОДА (Меняется вердикт алгоритма) */}
-        <div className="bg-slate-900 text-white p-6 lg:px-12 lg:py-8 flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-300">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-              {isBusiness ? (
-                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-              ) : (
-                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EF4444" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-              )}
+            <div className="mb-8 pb-8 border-b border-gray-100">
+              <div className="text-sm font-bold text-gray-400 uppercase mb-2">Новый срок кредита</div>
+              <div className="text-2xl font-bold text-gray-900">{tactics[activeTab].term}</div>
             </div>
-            <div>
-              <p className="text-sm text-slate-400 font-medium mb-1">Финальный вердикт алгоритма</p>
-              {isBusiness ? (
-                <p className="text-lg font-medium">Для бизнеса лизинг выгоднее на <span className="font-mono font-bold text-emerald-400">1 536 000 ₽</span></p>
-              ) : (
-                <p className="text-lg font-medium">Для физлица выгоднее автокредит на <span className="font-mono font-bold text-emerald-400">370 000 ₽</span></p>
-              )}
-            </div>
+            <p className="text-gray-600 mb-8 leading-relaxed h-20">{tactics[activeTab].desc}</p>
+            <button onClick={scrollToCalculator} className="w-full bg-gray-900 hover:bg-indigo-600 text-white font-bold py-4 rounded-xl transition-all shadow-md">
+              Применить к моему кредиту &rarr;
+            </button>
           </div>
         </div>
+
       </div>
     </section>
   );
