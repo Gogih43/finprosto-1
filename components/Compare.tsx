@@ -1,93 +1,80 @@
 'use client';
-import { useState } from 'react';
 
 export default function Compare() {
-  const [activeTab, setActiveTab] = useState(2);
-
-  const tactics: Record<number, any> = {
-    1: {
-      title: "Сделать рефинансирование",
-      subtitle: "Ставка уменьшится на 2%",
-      savings: "+ 124 000 ₽",
-      term: "Без изменений",
-      color: "bg-blue-500",
-      desc: "Идеально, если ставки на рынке упали. Вы просто переводите долг в другой банк. Платеж становится меньше, а срок остается прежним."
-    },
-    2: {
-      title: "Ежемесячное досрочное погашение",
-      subtitle: "Платить на 15 000 ₽ больше",
-      savings: "+ 412 000 ₽",
-      term: "Меньше на 1 г. 8 мес.",
-      color: "bg-green-500",
-      desc: "Самая выгодная стратегия. Направляя свободные деньги прямо в тело долга, вы отсекаете самые дорогие проценты банка."
-    },
-    3: {
-      title: "Увеличить срок на 2 года",
-      subtitle: "Снизить платеж на 12 000 ₽",
-      savings: "- 185 000 ₽ (переплата)",
-      term: "Плюс 2 года",
-      color: "bg-orange-500",
-      desc: "Стратегия безопасности. Если упали доходы, лучше растянуть срок и снизить ежемесячный платеж, чтобы не допустить просрочек."
-    }
-  };
-
-  const scrollToCalculator = () => {
-    const calc = document.getElementById('calculator');
-    if (calc) {
-      calc.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section className="py-20 bg-gray-50" id="compare">
-      <div className="container mx-auto px-4 max-w-5xl">
-        <div className="text-center mb-12">
+    <section className="py-20 bg-white" id="compare">
+      <div className="container mx-auto px-4 max-w-6xl">
+        
+        <div className="text-center mb-16">
+          <span className="bg-blue-100 text-blue-700 font-bold px-4 py-2 rounded-full text-sm uppercase tracking-wider mb-4 inline-block">
+            Для бизнеса и ИП
+          </span>
           <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-6">
-            А что, если изменить тактику?
+            Кредит или Лизинг?
           </h2>
-          <div className="bg-indigo-50 border border-indigo-100 rounded-2xl p-4 max-w-3xl mx-auto inline-block">
-            <p className="text-lg text-indigo-900">
-              Расчеты приведены для базового кейса: <b>кредит 1 500 000 ₽</b> на <b>5 лет</b> по ставке <b>20% годовых</b>. 
-              Посмотрите, как изменение стратегии влияет на итоговую переплату.
-            </p>
-          </div>
+          <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+            Покупаете авто или спецтехнику на компанию? Сравните переплаты и узнайте, как легально сэкономить до 40% на налогах.
+          </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 items-start">
-          <div className="w-full lg:w-1/2 space-y-4">
-            <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Выберите сценарий</h3>
-            {[1, 2, 3].map((num) => (
-              <div 
-                key={num}
-                onClick={() => setActiveTab(num)}
-                className={`p-6 rounded-2xl cursor-pointer transition-all border-2 ${
-                  activeTab === num ? 'border-indigo-600 bg-white shadow-lg scale-[1.02]' : 'border-transparent bg-gray-100 hover:bg-gray-200'
-                }`}
-              >
-                <div className="text-sm font-bold text-indigo-600 mb-1">{tactics[num].subtitle}</div>
-                <div className="text-xl font-bold text-gray-900">{tactics[num].title}</div>
-              </div>
-            ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          {/* КРЕДИТ */}
+          <div className="bg-gray-50 rounded-3xl p-8 border border-gray-200">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+              <span className="w-10 h-10 bg-gray-200 text-gray-600 flex items-center justify-center rounded-full">🚗</span>
+              Автокредит
+            </h3>
+            <ul className="space-y-4 mb-8">
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 font-bold">✕</span>
+                <span className="text-gray-700">Имущество сразу в залоге у банка</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 font-bold">✕</span>
+                <span className="text-gray-700">Увеличивает долговую нагрузку компании</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-red-500 font-bold">✕</span>
+                <span className="text-gray-700">НДС не возмещается (если продавец без НДС)</span>
+              </li>
+            </ul>
+            <div className="mt-auto p-4 bg-gray-200 rounded-xl">
+              <span className="text-sm text-gray-600 font-bold">Выгода:</span>
+              <div className="text-xl font-black text-gray-900 mt-1">Только скидка от дилера</div>
+            </div>
           </div>
 
-          <div className="w-full lg:w-1/2 bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 relative overflow-hidden">
-            <div className={`absolute top-0 left-0 right-0 h-2 ${tactics[activeTab].color} transition-colors duration-500`}></div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-8">Результат стратегии</h3>
-            <div className="mb-8">
-              <div className="text-sm font-bold text-gray-400 uppercase mb-2">Финансовый итог</div>
-              <div className={`text-4xl md:text-5xl font-black ${activeTab === 3 ? 'text-orange-500' : 'text-green-500'}`}>
-                {tactics[activeTab].savings}
-              </div>
+          {/* ЛИЗИНГ */}
+          <div className="bg-gradient-to-br from-indigo-900 to-blue-900 rounded-3xl p-8 border border-indigo-700 shadow-2xl relative overflow-hidden transform md:-translate-y-4">
+            <div className="absolute -right-10 -top-10 text-indigo-500/20 text-9xl">🚜</div>
+            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3 relative z-10">
+              <span className="w-10 h-10 bg-indigo-500 text-white flex items-center justify-center rounded-full">💼</span>
+              Лизинг
+            </h3>
+            <ul className="space-y-4 mb-8 relative z-10">
+              <li className="flex items-start gap-3">
+                <span className="text-green-400 font-bold">✓</span>
+                <span className="text-indigo-100">Возврат 20% НДС со всей суммы договора</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-green-400 font-bold">✓</span>
+                <span className="text-indigo-100">Снижение налога на прибыль (платежи идут в расходы)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-green-400 font-bold">✓</span>
+                <span className="text-indigo-100">Ускоренная амортизация с коэффициентом до 3</span>
+              </li>
+            </ul>
+            <div className="mt-auto p-4 bg-indigo-800/50 rounded-xl border border-indigo-500/30 relative z-10">
+              <span className="text-sm text-indigo-300 font-bold">Налоговая выгода:</span>
+              <div className="text-2xl font-black text-green-400 mt-1">До 40% от стоимости</div>
             </div>
-            <div className="mb-8 pb-8 border-b border-gray-100">
-              <div className="text-sm font-bold text-gray-400 uppercase mb-2">Новый срок кредита</div>
-              <div className="text-2xl font-bold text-gray-900">{tactics[activeTab].term}</div>
-            </div>
-            <p className="text-gray-600 mb-8 leading-relaxed h-20">{tactics[activeTab].desc}</p>
-            <button onClick={scrollToCalculator} className="w-full bg-gray-900 hover:bg-indigo-600 text-white font-bold py-4 rounded-xl transition-all shadow-md">
-              Применить к моему кредиту &rarr;
+            <button className="w-full mt-6 bg-white text-indigo-900 font-bold py-4 rounded-xl hover:bg-gray-100 transition-colors relative z-10">
+              Каталог лизинговых компаний
             </button>
           </div>
+
         </div>
       </div>
     </section>

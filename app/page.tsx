@@ -1,7 +1,9 @@
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Calculator from '../components/Calculator';
-import Compare from '../components/Compare';
+import Tactics from '../components/Tactics'; // 👈 Добавили Симулятор тактик
+import Compare from '../components/Compare'; // 👈 Наш Лизинг
+import Scenarios from '../components/Scenarios';
 import Articles from '../components/Articles';
 import Footer from '../components/Footer';
 
@@ -10,16 +12,11 @@ export default function Home() {
     <>
       <Header />
       <main>
-        {/* Главный экран */}
         <Hero />
-        
-        {/* Калькулятор со ставками */}
         <Calculator />
-        
-        {/* Интерактивный симулятор тактик (наш новый Compare) */}
-        <Compare />
-        
-        {/* Блок со статьями */}
+        <Tactics />     {/* Сначала человек играет с тактиками */}
+        <Compare />     {/* Потом бизнесмены видят лизинг */}
+        <Scenarios />
         <Articles />
       </main>
       <Footer />
