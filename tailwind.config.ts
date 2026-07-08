@@ -4,7 +4,7 @@ const config: Config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",        // <-- Вот тут я убрал src/
     "./components/**/*.{js,ts,jsx,tsx,mdx}", // <-- И тут убрал
-    "./data/**/*.{js,ts,jsx,tsx}"
+    
   ],
   theme: {
     extend: {
