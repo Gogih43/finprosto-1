@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface BankruptcyModalProps {
   isOpen: boolean;
@@ -10,14 +10,21 @@ export default function BankruptcyModal({ isOpen, onClose }: BankruptcyModalProp
   const [step, setStep] = useState(1);
   const [debtAmount, setDebtAmount] = useState(500000);
 
-  // Ссылка на юриста (потом вставишь реальный номер)
+  // 💡 МАГИЯ СБРОСА ПАМЯТИ: Как только isOpen меняется на true, сбрасываем шаги
+  useEffect(() => {
+    if (isOpen) {
+      setStep(1);
+      setDebtAmount(500000);
+    }
+  }, [isOpen]);
+
+  // Ссылка на юриста
   const whatsappLink = `https://wa.me/79990000000?text=Здравствуйте! Прошел тест на сайте FINПРОСТО. Долг ${debtAmount} руб. Хочу узнать про банкротство.`;
 
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-gray-900/80 backdrop-blur-sm">
-      {/* Кнопка закрытия при клике по темному фону */}
       <div className="absolute inset-0 cursor-pointer" onClick={onClose}></div>
       
       <div className="bg-white rounded-3xl p-6 md:p-10 shadow-2xl max-w-xl w-full relative z-10 animate-fade-in">
@@ -35,7 +42,6 @@ export default function BankruptcyModal({ isOpen, onClose }: BankruptcyModalProp
           <h2 className="text-2xl md:text-3xl font-black text-gray-900">Тест на списание долгов</h2>
         </div>
 
-        {/* ШАГ 1: Ползунок долга */}
         {step === 1 && (
           <div>
             <h3 className="text-xl font-bold mb-2 text-center text-gray-800">Какая у вас общая сумма долгов?</h3>
@@ -60,7 +66,6 @@ export default function BankruptcyModal({ isOpen, onClose }: BankruptcyModalProp
           </div>
         )}
 
-        {/* ШАГ 2: Просрочки */}
         {step === 2 && (
           <div className="animate-fade-in">
             <h3 className="text-xl font-bold mb-6 text-center text-gray-800">Есть ли у вас просрочки по платежам?</h3>
@@ -75,7 +80,6 @@ export default function BankruptcyModal({ isOpen, onClose }: BankruptcyModalProp
           </div>
         )}
 
-        {/* ШАГ 3: Финал и переход в WhatsApp */}
         {step === 3 && (
           <div className="animate-fade-in text-center">
             <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
