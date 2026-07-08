@@ -15,7 +15,6 @@ export default function Home() {
         <Calculator />
         <Tactics />     {/* Сначала человек играет с тактиками */}
         <Compare />     {/* Потом бизнесмены видят лизинг */}
-        <Scenarios />
         <Articles />
       </main>
       <Footer />
