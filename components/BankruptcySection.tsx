@@ -5,11 +5,47 @@ export default function BankruptcySection() {
   const [step, setStep] = useState(1);
   const [debtAmount, setDebtAmount] = useState(500000);
 
-  const whatsappLink = `https://wa.me/79990000000?text=Здравствуйте! Прошел тест на сайте FINПРОСТО. Долг ${debtAmount} руб. Хочу узнать про банкротство.`;
+  // Обновленный список компаний с твоими данными
+  const bankruptcyCompanies = [
+    { 
+      name: "Банкрот Консалт", 
+      price: "от 8 460 ₽/мес.", 
+      tag: "Оформление онлайн", 
+      features: ["Консультация бесплатно", "Защита от коллекторов"],
+      link: "https://bankrotconsult.ru/" 
+    },
+    { 
+      name: "ФЦБГ", 
+      price: "от 4 900 ₽/мес.", 
+      tag: "Лучшие отзывы", 
+      features: ["Рассрочка", "Бесплатная консультация"],
+      link: "https://fcbg.ru/" 
+    },
+    { 
+      name: "2Лекс", 
+      price: "от 7 960 ₽/мес.", 
+      tag: "Популярный выбор", 
+      features: ["Рассрочка", "Защита от коллекторов"],
+      link: "https://2lex.ru/" 
+    },
+    { 
+      name: "НССД", 
+      price: "от 15 000 ₽/мес.", 
+      tag: "Премиум сервис", 
+      features: ["Под ключ", "Гарантия результата"],
+      link: "https://nssd.su/" 
+    },
+    { 
+      name: "КРЕДИТА НЕТ", 
+      price: "от 3 860 ₽/мес.", 
+      tag: "Самая низкая цена", 
+      features: ["Рассрочка", "Консультация бесплатно"],
+      link: "https://kredita.net/" 
+    }
+  ];
 
   return (
     <section className="py-20 bg-rose-50/30 relative overflow-hidden" id="bankruptcy">
-      {/* Мягкие красные блики по углам */}
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-red-200 rounded-full mix-blend-multiply filter blur-3xl opacity-60"></div>
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-red-100 rounded-full mix-blend-multiply filter blur-3xl opacity-60"></div>
 
@@ -26,7 +62,7 @@ export default function BankruptcySection() {
           </p>
         </div>
 
-        <div className="bg-white text-gray-900 rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 max-w-2xl mx-auto">
+        <div className="bg-white text-gray-900 rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 max-w-3xl mx-auto">
           
           {step === 1 && (
             <div className="animate-fade-in">
@@ -40,7 +76,6 @@ export default function BankruptcySection() {
                 value={debtAmount} onChange={(e) => setDebtAmount(Number(e.target.value))} 
                 className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 mb-10" 
               />
-              {/* КНОПКА: Черная -> Синяя при наведении */}
               <button onClick={() => setStep(2)} className="w-full bg-gray-900 hover:bg-indigo-600 text-white font-bold py-4 rounded-xl text-lg transition-colors shadow-md">
                 Далее &rarr;
               </button>
@@ -61,21 +96,61 @@ export default function BankruptcySection() {
             </div>
           )}
 
+          {/* ШАГ 3: Шикарный рейтинг компаний */}
           {step === 3 && (
-            <div className="animate-fade-in text-center">
-              <div className="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
-              </div>
+            <div className="animate-fade-in text-center w-full">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Вам доступно списание долгов</h3>
               <p className="text-gray-500 mb-8 leading-relaxed">
-                Вы можете законно списать <b>{debtAmount.toLocaleString('ru-RU')} ₽</b>. <br/><br/>
-                Мы не собираем ваши данные. Нажмите кнопку ниже, чтобы перейти в защищенный чат WhatsApp с юристом. Он изучит ситуацию бесплатно.
+                Мы подобрали ТОП-5 надежных компаний, которые помогут законно списать <b>{debtAmount.toLocaleString('ru-RU')} ₽</b>. Сравните стоимость и выберите партнера.
               </p>
-              {/* Кнопка WhatsApp остается зеленой (корпоративный цвет мессенджера) */}
-              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="block w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 rounded-xl text-lg transition-all shadow-lg hover:shadow-green-500/30">
-                Написать юристу в WhatsApp
-              </a>
-              <button onClick={() => setStep(1)} className="mt-6 text-sm text-gray-400 hover:text-gray-600 underline font-medium">
+              
+              <div className="flex flex-col gap-4 w-full mb-8 text-left">
+                {bankruptcyCompanies.map((company, index) => (
+                  <div key={index} className="flex flex-col md:flex-row items-center justify-between p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-md transition-all group">
+                    
+                    {/* Левая часть: Место, Название, Тег */}
+                    <div className="flex items-center gap-4 w-full md:w-auto mb-4 md:mb-0">
+                      <div className="w-10 h-10 bg-white shadow-sm border border-gray-200 rounded-full flex items-center justify-center font-black text-gray-400">
+                        {index + 1}
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-lg font-black text-gray-900">{company.name}</span>
+                          <span className="bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase">
+                            {company.tag}
+                          </span>
+                        </div>
+                        <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 font-medium">
+                          {company.features.map((feature, i) => (
+                            <span key={i} className="flex items-center gap-1">
+                              <span className="text-green-500">✓</span> {feature}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Правая часть: Цена и Кнопка */}
+                    <div className="flex flex-row md:flex-col items-center md:items-end justify-between w-full md:w-auto gap-4 md:gap-2">
+                      <div className="text-right">
+                        <div className="text-xs text-gray-400 font-bold uppercase mb-1">Стоимость</div>
+                        <div className="text-xl font-black text-indigo-600">{company.price}</div>
+                      </div>
+                      <a 
+                        href={company.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-gray-900 hover:bg-indigo-600 text-white font-bold py-2.5 px-6 rounded-xl transition-colors text-sm shadow-md whitespace-nowrap"
+                      >
+                        Перейти на сайт &rarr;
+                      </a>
+                    </div>
+
+                  </div>
+                ))}
+              </div>
+
+              <button onClick={() => setStep(1)} className="text-sm text-gray-400 hover:text-gray-600 underline font-medium">
                 Пройти тест заново
               </button>
             </div>

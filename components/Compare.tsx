@@ -52,7 +52,7 @@ export default function Compare() {
             </div>
           </div>
 
-          {/* Лизинг (С МЯГКИМ ГРАДИЕНТОМ И БЕЛЫМ ТРАКТОРОМ) */}
+          {/* Лизинг */}
           <div className="bg-gradient-to-br from-indigo-500 to-blue-500 rounded-3xl p-8 shadow-2xl relative overflow-hidden transform md:-translate-y-4 flex flex-col">
             <div className="absolute -right-4 -top-4 text-white/20 text-9xl pointer-events-none">🚜</div>
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3 relative z-10">
@@ -70,9 +70,10 @@ export default function Compare() {
                 <div className="text-3xl font-black text-white mt-2">До 40% экономии</div>
               </div>
               
+              {/* КНОПКА ТЕПЕРЬ ЧЕРНАЯ (синеет при наведении) */}
               <button 
                 onClick={scrollToCompanies}
-                className="w-full bg-white text-indigo-600 hover:bg-gray-50 font-black py-4 rounded-xl transition-all shadow-lg text-lg"
+                className="w-full bg-gray-900 text-white hover:bg-indigo-600 font-black py-4 rounded-xl transition-all shadow-lg text-lg"
               >
                 Посмотреть ТОП-5 компаний
               </button>
@@ -80,7 +81,7 @@ export default function Compare() {
           </div>
         </div>
 
-        {/* СПИСОК КОМПАНИЙ (С СИНИМИ КНОПКАМИ) */}
+        {/* СПИСОК КОМПАНИЙ */}
         {isCompaniesOpen && (
           <div id="leasing-list" className="mt-12 bg-gray-50 rounded-3xl p-8 border border-gray-100 animate-fade-in">
             <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Официальные партнеры</h3>
@@ -93,7 +94,7 @@ export default function Compare() {
                       {company.tag}
                     </span>
                   </div>
-                  {/* Кнопки теперь правильного синего цвета! */}
+                  {/* Кнопки тоже ЧЕРНЫЕ -> СИНИЕ */}
                   <a 
                     href={company.link}
                     target="_blank"

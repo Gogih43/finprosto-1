@@ -30,7 +30,6 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-4">Контакты</h4>
             <ul className="space-y-2 text-sm">
               <li><a href="mailto:info@finprosto.ru" className="hover:text-indigo-400 transition-colors">info@finprosto.ru</a></li>
-              <li>г. Москва, ул. Примерная, д. 1</li>
             </ul>
           </div>
         </div>
