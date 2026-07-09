@@ -5,7 +5,6 @@ import Link from 'next/link';
 export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Проверяем при загрузке: если юзер уже жал кнопку, больше не показываем
   useEffect(() => {
     const isAccepted = localStorage.getItem('cookiesAccepted');
     if (!isAccepted) {
@@ -21,25 +20,31 @@ export default function CookieBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 md:bottom-8 md:left-8 z-[100] bg-white border border-gray-100 shadow-2xl rounded-2xl p-6 max-w-sm animate-fade-in">
+    <div className="fixed bottom-4 left-4 md:bottom-8 md:left-8 z-[100] bg-white border border-gray-100 shadow-2xl rounded-2xl p-6 max-w-[400px] animate-fade-in">
       <div className="flex items-start gap-4">
-        {/* Иконка печеньки */}
-        <div className="text-3xl">🍪</div>
+        
+        {/* Строгая корпоративная иконка */}
+        <div className="flex-shrink-0 text-indigo-600 mt-0.5">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+
         <div>
           <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-            Мы используем файлы cookie для аналитики и улучшения работы сервиса. Оставаясь с нами, вы соглашаетесь с{' '}
-            <Link href="/privacy" className="text-indigo-600 hover:underline">
-              Политикой конфиденциальности
-            </Link>.
+            Мы обрабатываем cookies, чтобы сделать наш сайт удобнее и персонализированее для вас. 
+            Подробнее: <Link href="/privacy" className="text-indigo-600 font-medium hover:underline">политика использования cookies</Link> и защита данных.
           </p>
-          <button 
-            onClick={acceptCookies}
-            // Кнопка в нашем фирменном стиле: черная -> синяя
-            className="w-full bg-gray-900 hover:bg-indigo-600 text-white font-bold py-2.5 rounded-xl transition-colors text-sm shadow-md"
-          >
-            Хорошо, понятно
-          </button>
+          <div className="flex gap-3">
+            <button 
+              onClick={acceptCookies}
+              className="flex-1 bg-gray-900 hover:bg-indigo-600 text-white font-bold py-2.5 rounded-xl transition-colors text-sm shadow-md"
+            >
+              Согласен
+            </button>
+          </div>
         </div>
+        
       </div>
     </div>
   );
