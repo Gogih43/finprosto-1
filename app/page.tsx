@@ -1,8 +1,9 @@
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Calculator from '../components/Calculator';
-import Tactics from '../components/Tactics'; // 👈 Добавили Симулятор тактик
-import Compare from '../components/Compare'; // 👈 Наш Лизинг
+import Tactics from '../components/Tactics'; 
+import Compare from '../components/Compare'; 
+import BankruptcySection from '../components/BankruptcySection'; // 👈 Добавили
 import Articles from '../components/Articles';
 import Footer from '../components/Footer';
 
@@ -13,8 +14,9 @@ export default function Home() {
       <main>
         <Hero />
         <Calculator />
-        <Tactics />     {/* Сначала человек играет с тактиками */}
-        <Compare />     {/* Потом бизнесмены видят лизинг */}
+        <Tactics />
+        <Compare />
+        <BankruptcySection /> {/* 👈 Темный мощный блок с Квизом */}
         <Articles />
       </main>
       <Footer />
