@@ -26,9 +26,9 @@ export default function ScrollToTop() {
   };
 
   return (
-    <button
+       <button
       onClick={scrollToTop}
-      className={`fixed bottom-8 right-8 z-50 p-4 bg-indigo-600 text-white rounded-full shadow-2xl hover:bg-indigo-700 hover:-translate-y-2 transition-all duration-300 ${
+      className={`fixed bottom-8 right-8 z-50 p-4 bg-gray-900 text-white rounded-full shadow-2xl hover:bg-indigo-600 hover:-translate-y-2 transition-all duration-300 ${
         isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0 pointer-events-none'
       }`}
       aria-label="Наверх"

@@ -119,7 +119,7 @@ export default function Calculator() {
                     href={checkoutLink} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-full md:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl transition-colors shadow-sm hover:shadow-lg text-center block"
+                    className="w-full md:w-auto bg-gray-900 hover:bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl transition-colors shadow-sm hover:shadow-lg text-center block"
                   >
                     Оформить
                   </a>

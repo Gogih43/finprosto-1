@@ -8,10 +8,10 @@ export default function BankruptcySection() {
   const whatsappLink = `https://wa.me/79990000000?text=Здравствуйте! Прошел тест на сайте FINПРОСТО. Долг ${debtAmount} руб. Хочу узнать про банкротство.`;
 
   return (
-    // Заменили bg-gray-900 на мягкий белый с очень легким красным оттенком (rose-50) для фона
     <section className="py-20 bg-rose-50/30 relative overflow-hidden" id="bankruptcy">
-      {/* Мягкий декоративный блик вместо жесткого красного пятна */}
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-red-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+      {/* Мягкие красные блики по углам */}
+      <div className="absolute -top-24 -right-24 w-96 h-96 bg-red-200 rounded-full mix-blend-multiply filter blur-3xl opacity-60"></div>
+      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-red-100 rounded-full mix-blend-multiply filter blur-3xl opacity-60"></div>
 
       <div className="container mx-auto px-4 max-w-4xl relative z-10">
         <div className="text-center mb-12">
@@ -26,7 +26,6 @@ export default function BankruptcySection() {
           </p>
         </div>
 
-        {/* Квиз на кристально белом фоне */}
         <div className="bg-white text-gray-900 rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 max-w-2xl mx-auto">
           
           {step === 1 && (
@@ -41,7 +40,8 @@ export default function BankruptcySection() {
                 value={debtAmount} onChange={(e) => setDebtAmount(Number(e.target.value))} 
                 className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 mb-10" 
               />
-              <button onClick={() => setStep(2)} className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl text-lg transition-all shadow-md">
+              {/* КНОПКА: Черная -> Синяя при наведении */}
+              <button onClick={() => setStep(2)} className="w-full bg-gray-900 hover:bg-indigo-600 text-white font-bold py-4 rounded-xl text-lg transition-colors shadow-md">
                 Далее &rarr;
               </button>
             </div>
@@ -71,7 +71,7 @@ export default function BankruptcySection() {
                 Вы можете законно списать <b>{debtAmount.toLocaleString('ru-RU')} ₽</b>. <br/><br/>
                 Мы не собираем ваши данные. Нажмите кнопку ниже, чтобы перейти в защищенный чат WhatsApp с юристом. Он изучит ситуацию бесплатно.
               </p>
-              {/* Кнопка WhatsApp (оставляем зеленой, так как это фирменный цвет мессенджера) */}
+              {/* Кнопка WhatsApp остается зеленой (корпоративный цвет мессенджера) */}
               <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="block w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 rounded-xl text-lg transition-all shadow-lg hover:shadow-green-500/30">
                 Написать юристу в WhatsApp
               </a>

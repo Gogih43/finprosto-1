@@ -98,7 +98,7 @@ export default function Compare() {
                     href={company.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 px-6 rounded-xl transition-colors text-center text-sm shadow-md"
+                    className="w-full sm:w-auto bg-gray-900 hover:bg-indigo-600 text-white font-bold py-2.5 px-6 rounded-xl transition-colors text-center text-sm shadow-md"
                   >
                     На сайт партнера &rarr;
                   </a>
