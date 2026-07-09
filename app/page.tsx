@@ -6,7 +6,8 @@ import Compare from '../components/Compare';
 import BankruptcySection from '../components/BankruptcySection';
 import Articles from '../components/Articles';
 import Footer from '../components/Footer';
-import ScrollToTop from '../components/ScrollToTop'; // 👈 Импортируем лифт
+import ScrollToTop from '../components/ScrollToTop';
+import CookieBanner from '../components/CookieBanner'; // 👈 Добавили печеньки
 
 export default function Home() {
   return (
@@ -22,8 +23,9 @@ export default function Home() {
       </main>
       <Footer />
       
-      {/* 👈 Ставим лифт. Он будет плавать поверх всех блоков */}
-      <ScrollToTop /> 
+      {/* Плавающие элементы поверх сайта */}
+      <ScrollToTop />
+      <CookieBanner /> {/* 👈 Наша байда */}
     </>
   );
 }
