@@ -62,7 +62,7 @@ export default function BankruptcySection() {
           </p>
         </div>
 
-        <div className="bg-white text-gray-900 rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 max-w-3xl mx-auto">
+        <div className="bg-white text-gray-900 rounded-3xl p-6 md:p-12 shadow-xl border border-gray-100 max-w-3xl mx-auto">
           
           {step === 1 && (
             <div className="animate-fade-in">
@@ -86,44 +86,44 @@ export default function BankruptcySection() {
             <div className="animate-fade-in">
               <h3 className="text-2xl font-bold mb-8 text-center">Есть ли у вас просрочки по платежам?</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <button onClick={() => setStep(3)} className="border-2 border-gray-100 hover:border-indigo-600 hover:bg-indigo-50 text-gray-700 font-bold py-4 rounded-xl text-lg transition-all">
+                <button onClick={() => setStep(3)} className="border-2 border-gray-100 hover:border-indigo-600 hover:bg-indigo-50 text-gray-700 font-bold py-4 px-2 rounded-xl text-base md:text-lg transition-all">
                   Да, звонят коллекторы
                 </button>
-                <button onClick={() => setStep(3)} className="border-2 border-gray-100 hover:border-indigo-600 hover:bg-indigo-50 text-gray-700 font-bold py-4 rounded-xl text-lg transition-all">
+                <button onClick={() => setStep(3)} className="border-2 border-gray-100 hover:border-indigo-600 hover:bg-indigo-50 text-gray-700 font-bold py-4 px-2 rounded-xl text-base md:text-lg transition-all">
                   Пока нет, но скоро будут
                 </button>
               </div>
             </div>
           )}
 
-          {/* ШАГ 3: Шикарный рейтинг компаний */}
+          {/* ШАГ 3: Исправленный рейтинг компаний */}
           {step === 3 && (
             <div className="animate-fade-in text-center w-full">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Вам доступно списание долгов</h3>
-              <p className="text-gray-500 mb-8 leading-relaxed">
+              <h3 className="text-xl md:text-2xl font-bold mb-4 text-gray-900">Вам доступно списание долгов</h3>
+              <p className="text-sm md:text-base text-gray-500 mb-8 leading-relaxed">
                 Мы подобрали ТОП-5 надежных компаний, которые помогут законно списать <b>{debtAmount.toLocaleString('ru-RU')} ₽</b>. Сравните стоимость и выберите партнера.
               </p>
               
               <div className="flex flex-col gap-4 w-full mb-8 text-left">
                 {bankruptcyCompanies.map((company, index) => (
-                  <div key={index} className="flex flex-col md:flex-row items-center justify-between p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-md transition-all group">
+                  <div key={index} className="flex flex-col md:flex-row md:items-center justify-between p-4 md:p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-md transition-all group overflow-hidden">
                     
                     {/* Левая часть: Место, Название, Тег */}
-                    <div className="flex items-center gap-4 w-full md:w-auto mb-4 md:mb-0">
-                      <div className="w-10 h-10 bg-white shadow-sm border border-gray-200 rounded-full flex items-center justify-center font-black text-gray-400">
+                    <div className="flex items-start md:items-center gap-3 w-full md:w-auto mb-4 md:mb-0">
+                      <div className="w-10 h-10 shrink-0 bg-white shadow-sm border border-gray-200 rounded-full flex items-center justify-center font-black text-gray-400">
                         {index + 1}
                       </div>
                       <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-lg font-black text-gray-900">{company.name}</span>
-                          <span className="bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase">
+                        <div className="flex flex-wrap items-center gap-2 mb-1">
+                          <span className="text-base md:text-lg font-black text-gray-900">{company.name}</span>
+                          <span className="bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase whitespace-nowrap">
                             {company.tag}
                           </span>
                         </div>
-                        <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 font-medium">
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500 font-medium mt-1.5 md:mt-0">
                           {company.features.map((feature, i) => (
                             <span key={i} className="flex items-center gap-1">
-                              <span className="text-green-500">✓</span> {feature}
+                              <span className="text-green-500 font-bold">✓</span> {feature}
                             </span>
                           ))}
                         </div>
@@ -131,19 +131,26 @@ export default function BankruptcySection() {
                     </div>
 
                     {/* Правая часть: Цена и Кнопка */}
-                    <div className="flex flex-row md:flex-col items-center md:items-end justify-between w-full md:w-auto gap-4 md:gap-2">
-                      <div className="text-right">
-                        <div className="text-xs text-gray-400 font-bold uppercase mb-1">Стоимость</div>
-                        <div className="text-xl font-black text-indigo-600">{company.price}</div>
+                    <div className="flex flex-col w-full md:w-auto gap-3 pt-4 md:pt-0 border-t border-gray-200 md:border-t-0 mt-2 md:mt-0">
+                      
+                      <div className="flex flex-row md:flex-col justify-between items-center md:items-end">
+                        <div className="text-xs text-gray-400 font-bold uppercase">Стоимость</div>
+                        {/* ИСПРАВЛЕНИЕ 1: whitespace-nowrap запрещает перенос цены */}
+                        <div className="text-lg md:text-xl font-black text-indigo-600 whitespace-nowrap">
+                          {company.price}
+                        </div>
                       </div>
+
+                      {/* ИСПРАВЛЕНИЕ 2: w-full заставляет кнопку занять всю ширину на мобилке */}
                       <a 
                         href={company.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-gray-900 hover:bg-indigo-600 text-white font-bold py-2.5 px-6 rounded-xl transition-colors text-sm shadow-md whitespace-nowrap"
+                        className="block w-full md:w-auto text-center bg-gray-900 hover:bg-indigo-600 text-white font-bold py-3 md:py-2.5 px-6 rounded-xl transition-colors text-sm shadow-md"
                       >
                         Перейти на сайт &rarr;
                       </a>
+                      
                     </div>
 
                   </div>
