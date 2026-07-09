@@ -2,10 +2,8 @@
 import { useState } from 'react';
 
 export default function Compare() {
-  // Состояние для открытия/закрытия списка компаний
   const [isCompaniesOpen, setIsCompaniesOpen] = useState(false);
 
-  // Список лизинговых компаний (Ссылки пока ведут на их официальные сайты)
   const leasingCompanies = [
     { name: "СберЛизинг", tag: "Гос. поддержка", link: "https://www.sberleasing.ru/" },
     { name: "Европлан", tag: "Одобрение за 1 час", link: "https://europlan.ru/" },
@@ -54,27 +52,27 @@ export default function Compare() {
             </div>
           </div>
 
-          {/* Лизинг */}
-          <div className="bg-indigo-600 rounded-3xl p-8 shadow-2xl relative overflow-hidden transform md:-translate-y-4 flex flex-col">
-            <div className="absolute -right-10 -top-10 text-indigo-500/30 text-9xl pointer-events-none">🚜</div>
+          {/* Лизинг (С МЯГКИМ ГРАДИЕНТОМ И БЕЛЫМ ТРАКТОРОМ) */}
+          <div className="bg-gradient-to-br from-indigo-500 to-blue-500 rounded-3xl p-8 shadow-2xl relative overflow-hidden transform md:-translate-y-4 flex flex-col">
+            <div className="absolute -right-4 -top-4 text-white/20 text-9xl pointer-events-none">🚜</div>
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3 relative z-10">
-              <span className="w-10 h-10 bg-indigo-500 text-white flex items-center justify-center rounded-full shadow-inner">💼</span>
+              <span className="w-10 h-10 bg-white/20 text-white flex items-center justify-center rounded-full shadow-inner">💼</span>
               Лизинг
             </h3>
             <ul className="space-y-4 mb-8 relative z-10 flex-grow">
-              <li className="flex items-start gap-3"><span className="text-green-300 font-bold text-lg leading-none">✓</span><span className="text-indigo-50 font-medium">Возврат 20% НДС со всей суммы договора</span></li>
-              <li className="flex items-start gap-3"><span className="text-green-300 font-bold text-lg leading-none">✓</span><span className="text-indigo-50 font-medium">Платежи идут в расходы (снижение налога)</span></li>
-              <li className="flex items-start gap-3"><span className="text-green-300 font-bold text-lg leading-none">✓</span><span className="text-indigo-50 font-medium">Ускоренная амортизация с коэффициентом до 3</span></li>
+              <li className="flex items-start gap-3"><span className="text-white font-bold text-lg leading-none">✓</span><span className="text-indigo-50 font-medium">Возврат 20% НДС со всей суммы договора</span></li>
+              <li className="flex items-start gap-3"><span className="text-white font-bold text-lg leading-none">✓</span><span className="text-indigo-50 font-medium">Платежи идут в расходы (снижение налога)</span></li>
+              <li className="flex items-start gap-3"><span className="text-white font-bold text-lg leading-none">✓</span><span className="text-indigo-50 font-medium">Ускоренная амортизация с коэффициентом до 3</span></li>
             </ul>
             <div className="mt-auto relative z-10">
-              <div className="p-5 bg-indigo-700/50 border border-indigo-400/30 rounded-2xl text-center mb-6">
-                <span className="text-sm text-indigo-200 font-bold uppercase tracking-wide">Налоговая выгода:</span>
-                <div className="text-3xl font-black text-green-300 mt-2">До 40% экономии</div>
+              <div className="p-5 bg-white/10 border border-white/20 backdrop-blur-sm rounded-2xl text-center mb-6">
+                <span className="text-sm text-indigo-100 font-bold uppercase tracking-wide">Налоговая выгода:</span>
+                <div className="text-3xl font-black text-white mt-2">До 40% экономии</div>
               </div>
               
               <button 
                 onClick={scrollToCompanies}
-                className="w-full bg-white text-indigo-700 hover:bg-gray-50 font-black py-4 rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
+                className="w-full bg-white text-indigo-600 hover:bg-gray-50 font-black py-4 rounded-xl transition-all shadow-lg text-lg"
               >
                 Посмотреть ТОП-5 компаний
               </button>
@@ -82,24 +80,25 @@ export default function Compare() {
           </div>
         </div>
 
-        {/* СПИСОК КОМПАНИЙ (Появляется по клику) */}
+        {/* СПИСОК КОМПАНИЙ (С СИНИМИ КНОПКАМИ) */}
         {isCompaniesOpen && (
           <div id="leasing-list" className="mt-12 bg-gray-50 rounded-3xl p-8 border border-gray-100 animate-fade-in">
             <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Официальные партнеры</h3>
             <div className="grid grid-cols-1 gap-4 max-w-3xl mx-auto">
               {leasingCompanies.map((company, index) => (
-                <div key={index} className="flex flex-col sm:flex-row items-center justify-between p-4 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+                <div key={index} className="flex flex-col sm:flex-row items-center justify-between p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
                   <div className="flex flex-col sm:flex-row items-center gap-4 mb-4 sm:mb-0">
                     <span className="text-xl font-black text-gray-800">{company.name}</span>
                     <span className="bg-indigo-50 text-indigo-600 text-xs px-3 py-1 rounded-full font-bold">
                       {company.tag}
                     </span>
                   </div>
+                  {/* Кнопки теперь правильного синего цвета! */}
                   <a 
                     href={company.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full sm:w-auto bg-gray-900 hover:bg-indigo-600 text-white font-bold py-2.5 px-6 rounded-xl transition-colors text-center text-sm"
+                    className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 px-6 rounded-xl transition-colors text-center text-sm shadow-md"
                   >
                     На сайт партнера &rarr;
                   </a>
