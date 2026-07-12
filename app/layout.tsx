@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
+// 1. ПОДКЛЮЧАЕМ МЕТРИКУ
+import YandexMetrika from '@/components/YandexMetrika'; 
 
 const roboto = Roboto({ 
   weight: ['400', '500', '700'],
@@ -17,6 +19,10 @@ const robotoMono = Roboto_Mono({
 export const metadata: Metadata = {
   title: "FINПРОСТО — Честный подбор кредитов и лизинга",
   description: "Независимый финансовый помощник. Сравниваем реальные условия банков, переплаты и скрытые комиссии. Автокредит, рефинансирование, лизинг.",
+  // 2. ПОДКЛЮЧАЕМ ВЕБМАСТЕР (Вставьте сюда ваш код из Яндекса вместо текста)
+  verification: {
+    yandex: 'СЮДА_ВСТАВИТЬ_КОД_ИЗ_ВЕБМАСТЕРА', 
+  },
 };
 
 export default function RootLayout({
@@ -26,7 +32,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className={`${roboto.variable} ${robotoMono.variable}`}>
-      {/* Вот здесь задается серый фон всего сайта (bg-background) и отступы по краям (p-4 lg:p-6) */}
       <body className="bg-background text-text font-sans antialiased p-4 lg:p-6 min-h-screen">
         
         {/* А ВОТ НАШ ГЛАВНЫЙ БЕЛЫЙ КОНТЕЙНЕР СО СКРУГЛЕНИЯМИ */}
@@ -36,6 +41,9 @@ export default function RootLayout({
           {children}
           
         </div>
+
+        {/* 3. НЕВИДИМЫЙ СКРИПТ МЕТРИКИ */}
+        <YandexMetrika />
 
       </body>
     </html>
