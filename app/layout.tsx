@@ -19,9 +19,9 @@ const robotoMono = Roboto_Mono({
 export const metadata: Metadata = {
   title: "FINПРОСТО — Честный подбор кредитов и лизинга",
   description: "Независимый финансовый помощник. Сравниваем реальные условия банков, переплаты и скрытые комиссии. Автокредит, рефинансирование, лизинг.",
-  // 2. ПОДКЛЮЧАЕМ ВЕБМАСТЕР (Вставьте сюда ваш код из Яндекса вместо текста)
   verification: {
-    yandex: 'СЮДА_ВСТАВИТЬ_КОД_ИЗ_ВЕБМАСТЕРА', 
+    yandex: 'd5853ae0415c706c',
+    google: 'pkBd6cFffMTz6aIu9egTNKrpbySZVX3nQXTTu2Uj5dk',
   },
 };
 
