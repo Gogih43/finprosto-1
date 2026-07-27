@@ -37,32 +37,18 @@ export default function Calculator() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://finprosto-backend.onrender.com/api/get_market_data")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === "success") {
-          
-          // 🚀 ПЕРЕХВАТЧИК ДАННЫХ
-          let fetchedBanks = data.data.banks;
-          
-          // Проверяем, есть ли Совкомбанк. Если нет - добавляем его жестко в код.
-          const hasSovcom = fetchedBanks.some((b: any) => b.name.includes("Совком"));
-          if (!hasSovcom) {
-            fetchedBanks.push({
-              name: "Совкомбанк",
-              rate: 14.9, // Можете поменять ставку, если у них сейчас другая
-              badge: "Одобрение 98%" // Плашка для привлечения внимания
-            });
-          }
+    const backupBanks = [
+      { name: "Альфа-Банк", rate: 14.9, badge: "Высокий шанс" },
+      { name: "Т-Банк", rate: 15.5 },
+      { name: "ВТБ", rate: 14.5 },
+      { name: "ПСБ", rate: 15.0 },
+      { name: "Совкомбанк", rate: 14.9, badge: "Одобрение 98%" },
+      { name: "Сбербанк", rate: 14.5 }
+    ];
 
-          setBanks(fetchedBanks);
-        }
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Ошибка загрузки:", error);
-        setLoading(false);
-      });
+    // Мгновенно отдаем данные на экран без загрузки
+    setBanks(backupBanks);
+    setLoading(false);
   }, []);
 
   const calculatePayment = (rate: number) => {
