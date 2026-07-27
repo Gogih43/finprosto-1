@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-// Умный склонятор для русского языка (1 год, 2 года, 5 лет)
+// Умный склонятор для русского языка
 const pluralizeYears = (count: number) => {
   const mod10 = count % 10;
   const mod100 = count % 100;
@@ -11,17 +11,20 @@ const pluralizeYears = (count: number) => {
   return 'лет';
 };
 
-// Функция для получения ссылки (замени на свои рефералки, где нужно)
+// 💰 ФУНКЦИЯ ССЫЛОК (ВСТАВЬТЕ СЮДА ВАШИ ПАРТНЕРСКИЕ ССЫЛКИ ОТ LEADS)
 const getBankLink = (bankName: string) => {
-  if (bankName.includes("Альфа")) return "https://alfabank.ru/";
-  if (bankName.includes("Т-Банк") || bankName.includes("Тинькофф")) return "https://tbank.ru/";
-  if (bankName.includes("Сбер")) return "https://sberbank.ru/";
-  if (bankName.includes("Газпром")) return "https://gazprombank.ru/";
   
-  if (bankName.includes("ВТБ")) return "https://vtb.ru/personal/kredit/nalichnymi/";
-  if (bankName.includes("ПСБ")) return "https://psbank.ru/Personal/Loans";
+  // --- ПАРТНЕРСКИЕ ССЫЛКИ (Сюда вставляем ссылки без ?erid=...) ---
+  if (bankName.includes("Альфа")) return "https://pxl.leads.su/click/0b2afe322fa483133f530590072529e4";
+  if (bankName.includes("Т-Банк") || bankName.includes("Тинькофф")) return "https://pxl.leads.su/click/d7048bd204253f9d7cee8edfe7d60627";
+  if (bankName.includes("ВТБ")) return "https://pxl.leads.su/click/6fccd2c181391853bf87d05b9a8eef1f";
+  if (bankName.includes("ПСБ")) return "https://pxl.leads.su/click/58ae2107da73d297cd9185cd1f9647c7";
+  if (bankName.includes("Совком")) return "https://pxl.leads.su/click/9a747e841dac6478c79a6d6ca966dca3";
+
+  // --- ПРЯМЫЕ ССЫЛКИ (Для солидности, денег не приносят) ---
+  if (bankName.includes("Сбер")) return "https://www.sberbank.com/ru/person/credits/money";
+  if (bankName.includes("Газпром")) return "https://gazprombank.ru/";
   if (bankName.includes("Россельхоз")) return "https://rshb.ru/natural/loans/";
-  if (bankName.includes("Совком")) return "https://sovcombank.ru/credits/";
   if (bankName.includes("Уралсиб")) return "https://uralsib.ru/kredity";
   
   return `https://yandex.ru/search/?text=взять+кредит+${bankName}`;
@@ -38,7 +41,21 @@ export default function Calculator() {
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
-          setBanks(data.data.banks);
+          
+          // 🚀 ПЕРЕХВАТЧИК ДАННЫХ
+          let fetchedBanks = data.data.banks;
+          
+          // Проверяем, есть ли Совкомбанк. Если нет - добавляем его жестко в код.
+          const hasSovcom = fetchedBanks.some((b: any) => b.name.includes("Совком"));
+          if (!hasSovcom) {
+            fetchedBanks.push({
+              name: "Совкомбанк",
+              rate: 14.9, // Можете поменять ставку, если у них сейчас другая
+              badge: "Одобрение 98%" // Плашка для привлечения внимания
+            });
+          }
+
+          setBanks(fetchedBanks);
         }
         setLoading(false);
       })
