@@ -8,6 +8,7 @@ import Articles from '../components/Articles';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
 import CookieBanner from '../components/CookieBanner'; // 👈 Добавили печеньки
+import Mortgage from '../components/Mortgage';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <Calculator />
         <Tactics />
         <Compare />
+        <Mortgage />
         <BankruptcySection />
         <Articles />
       </main>
