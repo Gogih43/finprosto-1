@@ -8,39 +8,25 @@ export default function BankruptcySection() {
   // Обновленный список компаний с твоими данными
   const bankruptcyCompanies = [
     { 
-      name: "Банкрот Консалт", 
-      price: "от 8 460 ₽/мес.", 
-      tag: "Оформление онлайн", 
-      features: ["Консультация бесплатно", "Защита от коллекторов"],
-      link: "https://bankrotconsult.ru/" 
+      name: "Должник Прав", 
+      price: "от 6 600 ₽/мес.", 
+      tag: "Выбор пользователей 🌟", // Цепляет взгляд
+      features: ["Самая низкая цена", "Бесплатная консультация"],
+      link: "https://trckcp.com/dl/GABKUcnUYI5A/800/?erid=2SDnjcrZvRx" 
     },
     { 
-      name: "ФЦБГ", 
-      price: "от 4 900 ₽/мес.", 
-      tag: "Лучшие отзывы", 
-      features: ["Рассрочка", "Бесплатная консультация"],
-      link: "https://fcbg.ru/" 
-    },
-    { 
-      name: "2Лекс", 
-      price: "от 7 960 ₽/мес.", 
-      tag: "Популярный выбор", 
-      features: ["Рассрочка", "Защита от коллекторов"],
-      link: "https://2lex.ru/" 
-    },
-    { 
-      name: "НССД", 
+      name: "Долгов нет", 
       price: "от 15 000 ₽/мес.", 
-      tag: "Премиум сервис", 
-      features: ["Под ключ", "Гарантия результата"],
-      link: "https://nssd.su/" 
+      tag: "Надежный выбор", 
+      features: ["Списание под ключ", "Защита от коллекторов"],
+      link: "https://trckcp.com/dl/RZKXeNhrwyV9/1276/?erid=2SDnjdvp6F4" 
     },
     { 
-      name: "КРЕДИТА НЕТ", 
-      price: "от 3 860 ₽/мес.", 
-      tag: "Самая низкая цена", 
-      features: ["Рассрочка", "Консультация бесплатно"],
-      link: "https://kredita.net/" 
+      name: "Федерал Групп", 
+      price: "от 15 000 ₽/мес.", 
+      tag: "Премиум", 
+      features: ["100% гарантия", "Рассрочка платежа"],
+      link: "https://pxl.leads.su/click/212027aad2fcc201dba4e6c6d39878c5"
     }
   ];
 

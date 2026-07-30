@@ -3,29 +3,33 @@
 export default function Mortgage() {
   // Ваши офферы по ипотеке (Ссылки вставите от Leads.su или Rafinad)
   const mortgageOffers = [
+   // 1. АЛЬФА-БАНК (Сделали его максимально привлекательным)
     { 
       name: "Альфа-Банк", 
+      rate: "от 5.9%", 
+      type: "🔥 ХИТ: Одобрение 99%", // Яркая плашка, мимо которой не пройти
+      link: "https://pxl.leads.su/click/88df03d6bfd16fa3ee23a8d5c3410c25" 
+    },
+    // 2. ВТБ
+    { 
+      name: "ВТБ", 
       rate: "от 6.0%", 
       type: "Семейная ипотека", 
-      link: "ВСТАВИТЬ_ССЫЛКУ_АЛЬФА_ИПОТЕКА" 
+      link: "ВСТАВИТЬ_ССЫЛКУ_ВТБ_ИПОТЕКА" 
     },
+    // 3. Сбербанк (Для солидности, без партнерки)
     { 
       name: "Сбербанк", 
       rate: "от 8.0%", 
       type: "Новостройка", 
-      link: "https://www.sberbank.com/ru/person/credits/home" // Прямая ссылка для солидности
+      link: "https://www.sberbank.com/ru/person/credits/home" 
     },
+    // 4. ПСБ или Газпромбанк
     { 
-      name: "ВТБ", 
-      rate: "от 6.0%", 
-      type: "IT-ипотека", 
-      link: "ВСТАВИТЬ_ССЫЛКУ_ВТБ_ИПОТЕКА" 
-    },
-    { 
-      name: "Газпромбанк", 
-      rate: "от 10.5%", 
+      name: "ПСБ", 
+      rate: "от 8.5%", 
       type: "Вторичное жилье", 
-      link: "https://www.gazprombank.ru/personal/mortgage/" // Прямая ссылка
+      link: "ВСТАВИТЬ_ССЫЛКУ_ПСБ_ИПОТЕКА" 
     },
   ];
 
