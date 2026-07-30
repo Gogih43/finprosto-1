@@ -13,22 +13,24 @@ export default function Footer() {
               FIN<span className="text-indigo-500">ПРОСТО</span>
             </span>
             <p className="text-sm text-gray-400 max-w-sm">
-              Независимый сервис подбора финансовых услуг. Помогаем сравнивать кредиты, ипотеку и лизинг, чтобы вы принимали выгодные решения.
+              Независимый сервис подбора финансовых услуг. Помогаем сравнивать потребительские кредиты, кредитные карты, автокредиты и ипотеку, чтобы вы принимали выгодные решения.
             </p>
           </div>
           <div>
             <h4 className="text-white font-bold mb-4">Навигация</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#calculator" className="hover:text-indigo-400 transition-colors">Калькулятор</a></li>
-              <li><a href="#compare" className="hover:text-indigo-400 transition-colors">Кредит или лизинг</a></li>
-              <li><a href="#bankruptcy" className="hover:text-indigo-400 transition-colors">Банкротство</a></li>
+              <li><a href="#calculator" className="hover:text-indigo-400 transition-colors">Кредиты наличными</a></li>
+              <li><a href="#credit-cards" className="hover:text-indigo-400 transition-colors">Кредитные карты</a></li>
+              <li><a href="#autoloans" className="hover:text-indigo-400 transition-colors">Автокредиты</a></li>
+              <li><a href="#mortgage" className="hover:text-indigo-400 transition-colors">Ипотека</a></li>
+              <li><a href="#bankruptcy" className="hover:text-indigo-400 transition-colors">Списание долгов</a></li>
               <li><a href="#articles" className="hover:text-indigo-400 transition-colors">База знаний</a></li>
             </ul>
           </div>
           <div>
             <h4 className="text-white font-bold mb-4">Контакты</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="mailto:info@finprosto.ru" className="hover:text-indigo-400 transition-colors">info@finprosto.ru</a></li>
+              <li><a href="mailto:info@finprosto-gid.ru" className="hover:text-indigo-400 transition-colors">info@finprosto-gid.ru</a></li>
             </ul>
           </div>
         </div>
