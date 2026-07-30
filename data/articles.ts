@@ -20,10 +20,10 @@ export const articlesData = [
       
       Итог: всегда считайте итоговую переплату в калькуляторе, а не только смотрите на красивую низкую ставку в рекламе.
 
-      <div style="margin-top: 2rem; padding: 1.5rem; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 1rem;">
-        <h4 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; color: #111827;">💡 Не хотите считать вручную?</h4>
-        <p style="color: #4b5563; margin-bottom: 1rem; font-size: 0.95rem;">Сравните ваш текущий платеж с предложениями из нашего ТОП-5 банков и подайте заявку на рефинансирование онлайн за 1 минуту!</p>
-        <a href="/#calculator" style="display: inline-block; background-color: #111827; color: #ffffff; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 0.75rem; text-decoration: none; transition: 0.3s;">Перейти в Калькулятор →</a>
+      <div class="mt-8 p-6 bg-gray-50 border border-gray-100 rounded-2xl shadow-sm">
+        <h4 class="text-xl font-bold text-gray-900 mb-2">💡 Не хотите считать вручную?</h4>
+        <p class="text-gray-600 mb-5">Сравните ваш текущий платеж с предложениями из нашего ТОП-5 банков и подайте заявку на рефинансирование онлайн за 1 минуту!</p>
+        <a href="/#calculator" class="inline-block bg-gray-900 hover:bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl transition-colors duration-300">Перейти в Калькулятор &rarr;</a>
       </div>
     `
   },
@@ -46,10 +46,10 @@ export const articlesData = [
       2. Возьмите рассрочку на чайник. Самый простой способ показать банкам, что вы исправились — купить дешевую технику в рассрочку и погасить её без просрочек.
       3. Откройте зарплатный проект. Банк, на карту которого вы стабильно получаете деньги, доверяет вам гораздо больше остальных.
 
-      <div style="margin-top: 2rem; padding: 1.5rem; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 1rem;">
-        <h4 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; color: #111827;">💳 Нужен быстрый способ поднять рейтинг?</h4>
-        <p style="color: #4b5563; margin-bottom: 1rem; font-size: 0.95rem;">Оформите бесплатную кредитную карту и совершайте мелкие покупки, гася долг в льготный период. Уралсиб и Т-Банк часто одобряют даже с низким рейтингом.</p>
-        <a href="/#credit-cards" style="display: inline-block; background-color: #111827; color: #ffffff; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 0.75rem; text-decoration: none;">Выбрать кредитную карту →</a>
+      <div class="mt-8 p-6 bg-gray-50 border border-gray-100 rounded-2xl shadow-sm">
+        <h4 class="text-xl font-bold text-gray-900 mb-2">💳 Нужен быстрый способ поднять рейтинг?</h4>
+        <p class="text-gray-600 mb-5">Оформите бесплатную кредитную карту и совершайте мелкие покупки, гася долг в льготный период. Уралсиб и Т-Банк часто одобряют даже с низким рейтингом.</p>
+        <a href="/#credit-cards" class="inline-block bg-gray-900 hover:bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl transition-colors duration-300">Выбрать кредитную карту &rarr;</a>
       </div>
     `
   },
@@ -72,10 +72,10 @@ export const articlesData = [
 
       Совет профи: Уменьшайте платеж, но продолжайте платить старую сумму. Так вы получите математическую выгоду и психологическую безопасность.
 
-      <div style="margin-top: 2rem; padding: 1.5rem; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 1rem;">
-        <h4 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; color: #111827;">🏠 Ищете выгодные условия для покупки жилья?</h4>
-        <p style="color: #4b5563; margin-bottom: 1rem; font-size: 0.95rem;">Мы собрали все актуальные льготные программы (Семейная, IT-ипотека, Новостройки) с максимальным шансом одобрения в одном месте.</p>
-        <a href="/#mortgage" style="display: inline-block; background-color: #111827; color: #ffffff; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 0.75rem; text-decoration: none;">Посмотреть ставки по Ипотеке →</a>
+      <div class="mt-8 p-6 bg-gray-50 border border-gray-100 rounded-2xl shadow-sm">
+        <h4 class="text-xl font-bold text-gray-900 mb-2">🏠 Ищете выгодные условия для покупки жилья?</h4>
+        <p class="text-gray-600 mb-5">Мы собрали все актуальные льготные программы (Семейная, IT-ипотека, Новостройки) с максимальным шансом одобрения в одном месте.</p>
+        <a href="/#mortgage" class="inline-block bg-gray-900 hover:bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl transition-colors duration-300">Сравнить ставки по ипотеке &rarr;</a>
       </div>
     `
   },
@@ -98,10 +98,10 @@ export const articlesData = [
       2. Привлеките созаемщика с хорошей КИ.
       3. Рассмотрите кредит под залог автомобиля.
 
-      <div style="margin-top: 2rem; padding: 1.5rem; background-color: #fef2f2; border: 1px solid #fecaca; border-radius: 1rem;">
-        <h4 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; color: #991b1b;">⚖️ Ситуация вышла из-под контроля?</h4>
-        <p style="color: #7f1d1d; margin-bottom: 1rem; font-size: 0.95rem;">Если банки уже отказывают в кредитах, а коллекторы не дают покоя, государство позволяет законно списать долги по закону 127-ФЗ.</p>
-        <a href="/#bankruptcy" style="display: inline-block; background-color: #b91c1c; color: #ffffff; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 0.75rem; text-decoration: none;">Пройти тест на списание долгов →</a>
+      <div class="mt-8 p-6 bg-gray-50 border border-gray-100 rounded-2xl shadow-sm">
+        <h4 class="text-xl font-bold text-gray-900 mb-2">⚖️ Ситуация вышла из-под контроля?</h4>
+        <p class="text-gray-600 mb-5">Если банки уже отказывают в кредитах, а коллекторы не дают покоя, государство позволяет законно списать долги по закону 127-ФЗ.</p>
+        <a href="/#bankruptcy" class="inline-block bg-gray-900 hover:bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl transition-colors duration-300">Пройти тест на списание долгов &rarr;</a>
       </div>
     `
   },
@@ -126,10 +126,10 @@ export const articlesData = [
       Что выбрать в итоге?
       Если вы покупаете подержанное авто с рук — берите потребительский кредит. Если берете новую машину из салона — оформляйте автокредит.
 
-      <div style="margin-top: 2rem; padding: 1.5rem; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 1rem;">
-        <h4 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; color: #111827;">🚗 Планируете покупку авто?</h4>
-        <p style="color: #4b5563; margin-bottom: 1rem; font-size: 0.95rem;">Мы собрали ТОП предложений от банков, которые выдают автокредиты на подержанные и новые машины без залога ПТС и КАСКО.</p>
-        <a href="/#autoloans" style="display: inline-block; background-color: #111827; color: #ffffff; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 0.75rem; text-decoration: none;">Подобрать автокредит →</a>
+      <div class="mt-8 p-6 bg-gray-50 border border-gray-100 rounded-2xl shadow-sm">
+        <h4 class="text-xl font-bold text-gray-900 mb-2">🚗 Планируете покупку авто?</h4>
+        <p class="text-gray-600 mb-5">Мы собрали ТОП предложений от банков, которые выдают автокредиты на подержанные и новые машины без залога ПТС и КАСКО.</p>
+        <a href="/#autoloans" class="inline-block bg-gray-900 hover:bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl transition-colors duration-300">Подобрать автокредит &rarr;</a>
       </div>
     `
   },
@@ -150,10 +150,10 @@ export const articlesData = [
 
       Итог: Вы не заплатили банку ни рубля процентов, но получили кэшбэк за покупки и проценты по вкладу. За год такая схема может приносить от 20 до 50 тысяч рублей пассивного дохода!
 
-      <div style="margin-top: 2rem; padding: 1.5rem; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 1rem;">
-        <h4 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; color: #111827;">💸 Хотите попробовать схему?</h4>
-        <p style="color: #4b5563; margin-bottom: 1rem; font-size: 0.95rem;">Для этого нужна карта с длинным льготным периодом и бесплатным обслуживанием. Мы отобрали лучшие варианты.</p>
-        <a href="/#credit-cards" style="display: inline-block; background-color: #111827; color: #ffffff; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 0.75rem; text-decoration: none;">Выбрать карту для кешбэка →</a>
+      <div class="mt-8 p-6 bg-gray-50 border border-gray-100 rounded-2xl shadow-sm">
+        <h4 class="text-xl font-bold text-gray-900 mb-2">💸 Хотите попробовать схему?</h4>
+        <p class="text-gray-600 mb-5">Для этого нужна карта с длинным льготным периодом и бесплатным обслуживанием. Мы отобрали лучшие варианты.</p>
+        <a href="/#credit-cards" class="inline-block bg-gray-900 hover:bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl transition-colors duration-300">Выбрать карту для кешбэка &rarr;</a>
       </div>
     `
   },
@@ -179,10 +179,10 @@ export const articlesData = [
 
       Банкротство — это не клеймо, а законный способ начать финансовую жизнь с чистого листа.
 
-      <div style="margin-top: 2rem; padding: 1.5rem; background-color: #fef2f2; border: 1px solid #fecaca; border-radius: 1rem;">
-        <h4 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; color: #991b1b;">🛡️ Узнайте, подходите ли вы под закон 127-ФЗ</h4>
-        <p style="color: #7f1d1d; margin-bottom: 1rem; font-size: 0.95rem;">Ответьте на 3 простых вопроса в нашем онлайн-тесте и получите список проверенных юристов с гарантией результата.</p>
-        <a href="/#bankruptcy" style="display: inline-block; background-color: #b91c1c; color: #ffffff; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 0.75rem; text-decoration: none;">Узнать шансы на списание →</a>
+      <div class="mt-8 p-6 bg-gray-50 border border-gray-100 rounded-2xl shadow-sm">
+        <h4 class="text-xl font-bold text-gray-900 mb-2">🛡️ Узнайте, подходите ли вы под закон 127-ФЗ</h4>
+        <p class="text-gray-600 mb-5">Ответьте на 3 простых вопроса в нашем онлайн-тесте и получите список проверенных юристов с гарантией результата.</p>
+        <a href="/#bankruptcy" class="inline-block bg-gray-900 hover:bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl transition-colors duration-300">Узнать шансы на списание &rarr;</a>
       </div>
     `
   },
@@ -204,12 +204,12 @@ export const articlesData = [
       Если у вас или ваших родителей уже есть квартира, банк с удовольствием выдаст 100% стоимости нового жилья под залог старого.
 
       Способ 3: Завышение стоимости (Рискованно!)
-      Иногда продавцы "вторички" соглашаются написать в договоре сумму больше реальной. Банк выдает ипотеку на "завышенную" сумму, и эти деньги идут продавцу как фиктивный первоначальный взнос. Мы настоятельно не рекомендуем эту серую схему — если вскроется обман, банк потребует вернуть все деньги сразу.
+      Иногда продавцы "вторички" соглашаются написать в договоре сумму больше реальной. Банк выдает ипотеку на "завышенную" сумму, и эти деньги идут продавцу как фиктивный первоначальный взнос. Мы настоятельно не рекомендуем эту серую схему.
 
-      <div style="margin-top: 2rem; padding: 1.5rem; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 1rem;">
-        <h4 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; color: #111827;">🔑 Сделайте первый шаг к своей квартире</h4>
-        <p style="color: #4b5563; margin-bottom: 1rem; font-size: 0.95rem;">Проверьте, какие банки одобрят вам ипотеку сегодня. Мы собрали ТОП предложений с минимальным пакетом документов.</p>
-        <a href="/#mortgage" style="display: inline-block; background-color: #111827; color: #ffffff; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 0.75rem; text-decoration: none;">Посмотреть банки →</a>
+      <div class="mt-8 p-6 bg-gray-50 border border-gray-100 rounded-2xl shadow-sm">
+        <h4 class="text-xl font-bold text-gray-900 mb-2">🔑 Сделайте первый шаг к своей квартире</h4>
+        <p class="text-gray-600 mb-5">Проверьте, какие банки одобрят вам ипотеку сегодня. Мы собрали ТОП предложений с минимальным пакетом документов.</p>
+        <a href="/#mortgage" class="inline-block bg-gray-900 hover:bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl transition-colors duration-300">Посмотреть ставки &rarr;</a>
       </div>
     `
   }
