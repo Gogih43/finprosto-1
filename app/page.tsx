@@ -1,33 +1,25 @@
-import Header from '../components/Header';
-import Hero from '../components/Hero';
-import Calculator from '../components/Calculator';
-import Tactics from '../components/Tactics'; 
-import Compare from '../components/Compare'; 
-import BankruptcySection from '../components/BankruptcySection';
-import Articles from '../components/Articles';
-import Footer from '../components/Footer';
-import ScrollToTop from '../components/ScrollToTop';
-import CookieBanner from '../components/CookieBanner'; // 👈 Добавили печеньки
-import Mortgage from '../components/Mortgage';
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import Calculator from '@/components/Calculator';
+import CreditCards from '@/components/CreditCards';
+import AutoLoans from '@/components/AutoLoans';
+import Mortgage from '@/components/Mortgage';
+import BankruptcySection from '@/components/BankruptcySection';
+import Articles from '@/components/Articles';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <>
+    <main className="min-h-screen bg-white">
       <Header />
-      <main>
-        <Hero />
-        <Calculator />
-        <Tactics />
-        <Compare />
-        <Mortgage />
-        <BankruptcySection />
-        <Articles />
-      </main>
+      <Hero />
+      <Calculator />          {/* 1. Кредиты наличными */}
+      <CreditCards />         {/* 2. Кредитные карты (Легкий продукт) */}
+      <AutoLoans />           {/* 3. Автокредиты */}
+      <Mortgage />            {/* 4. Ипотека */}
+      <BankruptcySection />   {/* 5. Списание долгов */}
+      <Articles />            {/* 6. SEO Статьи */}
       <Footer />
-      
-      {/* Плавающие элементы поверх сайта */}
-      <ScrollToTop />
-      <CookieBanner /> {/* 👈 Наша байда */}
-    </>
+    </main>
   );
 }
