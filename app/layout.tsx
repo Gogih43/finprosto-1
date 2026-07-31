@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
-// 1. ПОДКЛЮЧАЕМ МЕТРИКУ
+// ПОДКЛЮЧАЕМ МЕТРИКУ
 import YandexMetrika from '@/components/YandexMetrika'; 
 
 const roboto = Roboto({ 
@@ -23,6 +23,10 @@ export const metadata: Metadata = {
     yandex: 'd5853ae0415c706c',
     google: 'pkBd6cFffMTz6aIu9egTNKrpbySZVX3nQXTTu2Uj5dk',
   },
+  // ⚡ ВОТ ЭТА КОМАНДА ЗАСТАВИТ ТУПОГО РОБОТА ЯНДЕКСА УВИДЕТЬ ВАШ FAVICON
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
@@ -34,15 +38,14 @@ export default function RootLayout({
     <html lang="ru" className={`${roboto.variable} ${robotoMono.variable}`}>
       <body className="bg-background text-text font-sans antialiased p-4 lg:p-6 min-h-screen">
         
-        {/* А ВОТ НАШ ГЛАВНЫЙ БЕЛЫЙ КОНТЕЙНЕР СО СКРУГЛЕНИЯМИ */}
+        {/* ГЛАВНЫЙ БЕЛЫЙ КОНТЕЙНЕР СО СКРУГЛЕНИЯМИ */}
         <div className="w-full max-w-[1320px] mx-auto bg-white rounded-[2rem] shadow-app border border-border overflow-hidden flex flex-col relative z-10">
           
-          {/* Сюда автоматически подгружается наш page.tsx */}
           {children}
           
         </div>
 
-        {/* 3. НЕВИДИМЫЙ СКРИПТ МЕТРИКИ */}
+        {/* НЕВИДИМЫЙ СКРИПТ МЕТРИКИ */}
         <YandexMetrika />
 
       </body>
