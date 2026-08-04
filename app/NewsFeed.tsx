@@ -1,35 +1,37 @@
+import Parser from 'rss-parser';
 import Link from 'next/link';
+
+const parser = new Parser({
+  headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
+});
+
+// Кэшируем запрос, чтобы Next.js не дергал Ленту при каждом заходе юзера
+export const revalidate = 3600; // Обновление раз в час
 
 async function getNews() {
   try {
-    // Используем спец-сервис для обхода блокировки РИА Новостей
-    const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://ria.ru/export/rss2/economy/index.xml', {
-      next: { revalidate: 3600 } // Обновляем раз в час
-    });
+    // Лента Экономика (не блокирует Vercel)
+    const feed = await parser.parseURL('https://lenta.ru/rss/news/economics');
     
-    if (!res.ok) throw new Error('Блокировка');
-    const data = await res.json();
-
-    return data.items.slice(0, 4).map((item: any) => ({
-      id: item.guid || item.link,
+    // Берем 4 свежие новости
+    return feed.items.slice(0, 4).map(item => ({
+      id: item.guid || item.link || Math.random().toString(),
       title: item.title,
-      link: item.link, // Настоящая ссылка на конкретную новость
+      link: item.link, // Настоящая ссылка на статью
       pubDate: "Сегодня",
-      source: 'РИА Экономика'
+      source: 'Экономика'
     }));
   } catch (error) {
-    // ЗАПАСНОЙ ПЛАН: Если РИА все же упадет, тут стоят РЕАЛЬНЫЕ ссылки, а не решетки!
-    return [
-      { id: '1', title: 'Последние новости российской и мировой экономики', link: 'https://ria.ru/economy/', pubDate: 'Сегодня', source: 'РИА Экономика' },
-      { id: '2', title: 'Актуальные ставки по кредитам и льготной ипотеке', link: 'https://ria.ru/economy/', pubDate: 'Сегодня', source: 'РИА Экономика' },
-      { id: '3', title: 'Обзор финансовых рынков, инфляции и курсов валют', link: 'https://ria.ru/economy/', pubDate: 'Сегодня', source: 'РИА Экономика' },
-      { id: '4', title: 'Решения Центробанка РФ и прогнозы аналитиков', link: 'https://ria.ru/economy/', pubDate: 'Сегодня', source: 'РИА Экономика' }
-    ];
+    // НИКАКИХ ФЕЙКОВ. Если сервер Ленты упал - возвращаем пустоту.
+    return []; 
   }
 }
 
 export default async function NewsFeed() {
   const news = await getNews();
+
+  // Если новостей нет — просто прячем блок, чтобы не позориться
+  if (news.length === 0) return null;
 
   return (
     <section className="w-full py-12 bg-white border-b border-gray-200">
@@ -44,7 +46,7 @@ export default async function NewsFeed() {
           {news.map((item) => (
             <Link 
               key={item.id} 
-              href={item.link} 
+              href={item.link || '#'} 
               target="_blank" 
               rel="nofollow noopener noreferrer" 
               className="group flex flex-col justify-between p-6 bg-gray-50 border border-gray-200 hover:bg-white hover:border-indigo-600 hover:shadow-lg transition-all duration-300 relative"
