@@ -5,24 +5,25 @@ const parser = new Parser({
   headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
 });
 
-// Кэшируем запрос, чтобы Next.js не дергал Ленту при каждом заходе юзера
-export const revalidate = 3600; // Обновление раз в час
+export const revalidate = 3600; // Кэшируем на час
 
 async function getNews() {
   try {
-    // Лента Экономика (не блокирует Vercel)
-    const feed = await parser.parseURL('https://lenta.ru/rss/news/economics');
+    // РОССИЙСКАЯ ГАЗЕТА (ЭКОНОМИКА). 
+    // Завернута в прокси allorigins, чтобы Vercel не блокировали по IP.
+    const url = 'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://rg.ru/theme/ekonomika/rss.xml');
+    const feed = await parser.parseURL(url);
     
-    // Берем 4 свежие новости
+    // Берем 4 реальные новости
     return feed.items.slice(0, 4).map(item => ({
       id: item.guid || item.link || Math.random().toString(),
       title: item.title,
-      link: item.link, // Настоящая ссылка на статью
+      link: item.link, // РЕАЛЬНАЯ ссылка на rg.ru
       pubDate: "Сегодня",
-      source: 'Экономика'
+      source: 'Российская Газета'
     }));
   } catch (error) {
-    // НИКАКИХ ФЕЙКОВ. Если сервер Ленты упал - возвращаем пустоту.
+    // НИКАКИХ ФЕЙКОВ. Если сервер РГ недоступен - возвращаем пустоту, блок скроется.
     return []; 
   }
 }
@@ -30,7 +31,7 @@ async function getNews() {
 export default async function NewsFeed() {
   const news = await getNews();
 
-  // Если новостей нет — просто прячем блок, чтобы не позориться
+  // Если новостей нет — просто прячем блок
   if (news.length === 0) return null;
 
   return (
