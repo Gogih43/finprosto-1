@@ -16,8 +16,8 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       <Header />
       <CurrencyWidget /> {/* <--- ВСТАВИЛИ ПОЛОСКУ С ВАЛЮТАМИ */}
-      <Hero />
       <NewsFeed />
+      <Hero />
       <Calculator />
       <CreditCards />
       <AutoLoans />
