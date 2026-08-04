@@ -56,7 +56,7 @@ export default function CurrencyWidget() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
             <span className="text-gray-400 text-[11px] font-bold uppercase tracking-wider">
-              Курс на {lastUpdate}
+              Средний курс в банках на {lastUpdate}
             </span>
           </div>
 
