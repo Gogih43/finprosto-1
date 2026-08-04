@@ -1,38 +1,44 @@
-import Parser from 'rss-parser';
 import Link from 'next/link';
 
-const parser = new Parser({
-  headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
-});
-
-export const revalidate = 3600; // Кэшируем на час
+export const revalidate = 3600; // Обновляем раз в час
 
 async function getNews() {
   try {
-    // РОССИЙСКАЯ ГАЗЕТА (ЭКОНОМИКА). 
-    // Завернута в прокси allorigins, чтобы Vercel не блокировали по IP.
-    const url = 'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://rg.ru/theme/ekonomika/rss.xml');
-    const feed = await parser.parseURL(url);
+    // Используем надежный API-конвертер, который не блокируется Российскими сайтами
+    const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://rg.ru/theme/ekonomika/rss.xml');
     
-    // Берем 4 реальные новости
-    return feed.items.slice(0, 4).map(item => ({
+    if (!res.ok) throw new Error('Сервер новостей недоступен');
+    
+    const data = await res.json();
+    
+    if (data.status !== 'ok') throw new Error('Ошибка формата РГ');
+
+    return data.items.slice(0, 4).map((item: any) => ({
       id: item.guid || item.link || Math.random().toString(),
       title: item.title,
-      link: item.link, // РЕАЛЬНАЯ ссылка на rg.ru
+      link: item.link, // Настоящая ссылка на РГ
       pubDate: "Сегодня",
       source: 'Российская Газета'
     }));
   } catch (error) {
-    // НИКАКИХ ФЕЙКОВ. Если сервер РГ недоступен - возвращаем пустоту, блок скроется.
-    return []; 
+    // В случае ошибки возвращаем массив с одним элементом-ошибкой, чтобы блок НЕ пропадал, а показал нам проблему
+    return [{ error: true }];
   }
 }
 
 export default async function NewsFeed() {
   const news = await getNews();
 
-  // Если новостей нет — просто прячем блок
-  if (news.length === 0) return null;
+  // Если пришла ошибка с сервера
+  if (news.length === 1 && news[0].error) {
+    return (
+      <section className="w-full py-4 bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400">
+          Пульс рынка: ожидание данных от источника...
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="w-full py-12 bg-white border-b border-gray-200">
@@ -44,7 +50,7 @@ export default async function NewsFeed() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {news.map((item) => (
+          {news.map((item: any) => (
             <Link 
               key={item.id} 
               href={item.link || '#'} 
