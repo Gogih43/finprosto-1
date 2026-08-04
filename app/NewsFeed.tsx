@@ -1,44 +1,37 @@
+import Parser from 'rss-parser';
 import Link from 'next/link';
 
-export const revalidate = 3600; // Обновляем раз в час
+const parser = new Parser({
+  headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
+});
+
+// Кэшируем запрос, чтобы Next.js не дергал Ленту при каждом заходе юзера
+export const revalidate = 3600; // Обновление раз в час
 
 async function getNews() {
   try {
-    // Используем надежный API-конвертер, который не блокируется Российскими сайтами
-    const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://rg.ru/theme/ekonomika/rss.xml');
+    // Лента Экономика (не блокирует Vercel)
+    const feed = await parser.parseURL('https://lenta.ru/rss/news/economics');
     
-    if (!res.ok) throw new Error('Сервер новостей недоступен');
-    
-    const data = await res.json();
-    
-    if (data.status !== 'ok') throw new Error('Ошибка формата РГ');
-
-    return data.items.slice(0, 4).map((item: any) => ({
+    // Берем 4 свежие новости
+    return feed.items.slice(0, 4).map(item => ({
       id: item.guid || item.link || Math.random().toString(),
       title: item.title,
-      link: item.link, // Настоящая ссылка на РГ
+      link: item.link, // Настоящая ссылка на статью
       pubDate: "Сегодня",
-      source: 'Российская Газета'
+      source: 'Экономика'
     }));
   } catch (error) {
-    // В случае ошибки возвращаем массив с одним элементом-ошибкой, чтобы блок НЕ пропадал, а показал нам проблему
-    return [{ error: true }];
+    // НИКАКИХ ФЕЙКОВ. Если сервер Ленты упал - возвращаем пустоту.
+    return []; 
   }
 }
 
 export default async function NewsFeed() {
   const news = await getNews();
 
-  // Если пришла ошибка с сервера
-  if (news.length === 1 && news[0].error) {
-    return (
-      <section className="w-full py-4 bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400">
-          Пульс рынка: ожидание данных от источника...
-        </div>
-      </section>
-    );
-  }
+  // Если новостей нет — просто прячем блок, чтобы не позориться
+  if (news.length === 0) return null;
 
   return (
     <section className="w-full py-12 bg-white border-b border-gray-200">
@@ -50,7 +43,7 @@ export default async function NewsFeed() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {news.map((item: any) => (
+          {news.map((item) => (
             <Link 
               key={item.id} 
               href={item.link || '#'} 
