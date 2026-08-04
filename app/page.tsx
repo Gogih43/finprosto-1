@@ -9,6 +9,7 @@ import BankruptcySection from '@/components/BankruptcySection';
 import Articles from '@/components/Articles';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
+import NewsFeed from '@/components/NewsFeed';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Header />
       <CurrencyWidget /> {/* <--- ВСТАВИЛИ ПОЛОСКУ С ВАЛЮТАМИ */}
       <Hero />
+      <NewsFeed />
       <Calculator />
       <CreditCards />
       <AutoLoans />
