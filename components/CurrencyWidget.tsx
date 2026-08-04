@@ -20,7 +20,8 @@ export default function CurrencyWidget() {
           CNY: data.Valute.CNY
         });
         const updateDate = new Date(data.Date);
-        setLastUpdate(updateDate.toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' }));
+        // Компактная дата (например: 04.08.2026)
+        setLastUpdate(updateDate.toLocaleDateString('ru-RU'));
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -42,11 +43,11 @@ export default function CurrencyWidget() {
     cbr: rates.CNY.Value.toFixed(2) 
   } : null;
 
-  // Формируем блок с валютами, чтобы потом продублировать его для бесшовной бегущей строки
+  // Блок валют (с защитой от сжатия shrink-0 и запретом переноса whitespace-nowrap)
   const CurrencyData = () => (
-    <div className="flex items-center gap-12 pr-12">
+    <div className="flex items-center gap-8 md:gap-12 pr-8 md:pr-12 shrink-0 whitespace-nowrap">
       {usd && (
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-3">
           <div className="text-white font-black text-sm flex items-center gap-1.5 bg-gray-800 px-3 py-1 rounded-md">
             <span>🇺🇸</span> USD
           </div>
@@ -59,7 +60,7 @@ export default function CurrencyWidget() {
       )}
 
       {eur && (
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-3">
           <div className="text-white font-black text-sm flex items-center gap-1.5 bg-gray-800 px-3 py-1 rounded-md">
             <span>🇪🇺</span> EUR
           </div>
@@ -72,7 +73,7 @@ export default function CurrencyWidget() {
       )}
 
       {cny && (
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-3">
           <div className="text-white font-black text-sm flex items-center gap-1.5 bg-gray-800 px-3 py-1 rounded-md">
             <span>🇨🇳</span> CNY
           </div>
@@ -87,23 +88,25 @@ export default function CurrencyWidget() {
   );
 
   return (
-    <div className="bg-gray-900 border-b border-gray-800 overflow-hidden flex items-center h-12 relative">
+    <div className="bg-gray-900 border-b border-gray-800 h-12 relative flex items-center overflow-hidden w-full">
       
-      {/* Левая статичная плашка (закрывает начало бегущей строки) */}
-      <div className="absolute left-0 z-10 bg-gray-900 px-4 h-full flex items-center border-r border-gray-800 shadow-[10px_0_15px_-5px_rgba(17,24,39,1)]">
+      {/* Левая статичная плашка поверх текста */}
+      <div className="absolute left-0 top-0 bottom-0 z-10 bg-gray-900 px-4 flex items-center border-r border-gray-800 shadow-[10px_0_15px_-5px_rgba(17,24,39,1)]">
         <span className="relative flex h-2 w-2 mr-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
         </span>
-        <span className="text-gray-400 text-xs font-bold uppercase tracking-wide whitespace-nowrap">
-          Средний курс касс на {lastUpdate}
+        <span className="text-gray-300 text-xs font-bold uppercase tracking-wide whitespace-nowrap">
+          Средний курс в банках <span className="text-gray-500 font-medium ml-1">на {lastUpdate}</span>
         </span>
       </div>
 
-      {/* Сама бегущая строка (дублируем дважды для бесконечного эффекта) */}
-      <div className="animate-marquee ml-[300px] md:ml-[350px]">
-        <CurrencyData />
-        <CurrencyData />
+      {/* Сама бегущая строка (с отступом, чтобы не пряталась слишком далеко под плашку) */}
+      <div className="pl-[260px] md:pl-[300px] flex">
+        <div className="animate-marquee">
+          <CurrencyData />
+          <CurrencyData />
+        </div>
       </div>
 
     </div>

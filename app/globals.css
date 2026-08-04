@@ -14,14 +14,15 @@ select {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 .animate-marquee {
-  display: inline-flex;
-  animation: marquee 25s linear infinite;
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
 }
-/* Остановка бегущей строки при наведении мышки */
 .animate-marquee:hover {
   animation-play-state: paused;
 }
