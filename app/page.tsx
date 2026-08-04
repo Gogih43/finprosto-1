@@ -9,7 +9,7 @@ import BankruptcySection from '@/components/BankruptcySection';
 import Articles from '@/components/Articles';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
-import NewsFeed from '../components/NewsFeed';
+import NewsFeed from './NewsFeed';
 
 export default function Home() {
   return (
