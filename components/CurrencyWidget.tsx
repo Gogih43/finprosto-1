@@ -20,7 +20,6 @@ export default function CurrencyWidget() {
           CNY: data.Valute.CNY
         });
         const updateDate = new Date(data.Date);
-        // Компактная дата (например: 04.08.2026)
         setLastUpdate(updateDate.toLocaleDateString('ru-RU'));
         setLoading(false);
       })
@@ -43,7 +42,6 @@ export default function CurrencyWidget() {
     cbr: rates.CNY.Value.toFixed(2) 
   } : null;
 
-  // Блок валют (с защитой от сжатия shrink-0 и запретом переноса whitespace-nowrap)
   const CurrencyData = () => (
     <div className="flex items-center gap-8 md:gap-12 pr-8 md:pr-12 shrink-0 whitespace-nowrap">
       {usd && (
@@ -52,7 +50,7 @@ export default function CurrencyWidget() {
             <span>🇺🇸</span> USD
           </div>
           <div className="flex items-center gap-3 text-sm font-medium">
-            <span className="text-gray-500">ЦБ: {usd.cbr}</span>
+            <span className="text-gray-500 hidden sm:inline">ЦБ: {usd.cbr}</span>
             <span className="text-green-400">Покупка {usd.buy} ₽</span>
             <span className="text-red-400">Продажа {usd.sell} ₽</span>
           </div>
@@ -65,7 +63,7 @@ export default function CurrencyWidget() {
             <span>🇪🇺</span> EUR
           </div>
           <div className="flex items-center gap-3 text-sm font-medium">
-            <span className="text-gray-500">ЦБ: {eur.cbr}</span>
+            <span className="text-gray-500 hidden sm:inline">ЦБ: {eur.cbr}</span>
             <span className="text-green-400">Покупка {eur.buy} ₽</span>
             <span className="text-red-400">Продажа {eur.sell} ₽</span>
           </div>
@@ -78,7 +76,7 @@ export default function CurrencyWidget() {
             <span>🇨🇳</span> CNY
           </div>
           <div className="flex items-center gap-3 text-sm font-medium">
-            <span className="text-gray-500">ЦБ: {cny.cbr}</span>
+            <span className="text-gray-500 hidden sm:inline">ЦБ: {cny.cbr}</span>
             <span className="text-green-400">Покупка {cny.buy} ₽</span>
             <span className="text-red-400">Продажа {cny.sell} ₽</span>
           </div>
@@ -88,22 +86,31 @@ export default function CurrencyWidget() {
   );
 
   return (
-    <div className="bg-gray-900 border-b border-gray-800 h-12 relative flex items-center overflow-hidden w-full">
+    // Главный контейнер теперь просто flex
+    <div className="bg-gray-900 border-b border-gray-800 h-12 flex items-center overflow-hidden w-full">
       
-      {/* Левая статичная плашка поверх текста */}
-      <div className="absolute left-0 top-0 bottom-0 z-10 bg-gray-900 px-4 flex items-center border-r border-gray-800 shadow-[10px_0_15px_-5px_rgba(17,24,39,1)]">
+      {/* Левая плашка (перестала быть absolute, теперь она shrink-0, чтобы не сжиматься) */}
+      <div className="h-full z-20 shrink-0 bg-gray-900 px-3 md:px-4 flex items-center border-r border-gray-800 shadow-[10px_0_15px_-5px_rgba(17,24,39,1)]">
         <span className="relative flex h-2 w-2 mr-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
         </span>
-        <span className="text-gray-300 text-xs font-bold uppercase tracking-wide whitespace-nowrap">
-          Средний курс в банках <span className="text-gray-500 font-medium ml-1">на {lastUpdate}</span>
+        <span className="text-gray-300 text-[10px] md:text-xs font-bold uppercase tracking-wide whitespace-nowrap">
+          {/* Адаптивный текст: на ПК длинный, на мобилке короткий */}
+          <span className="hidden sm:inline">Средний курс </span>
+          <span className="sm:hidden">Курс </span>
+          <span className="text-gray-500 font-medium ml-1">на {lastUpdate}</span>
         </span>
       </div>
 
-      {/* Сама бегущая строка (с отступом, чтобы не пряталась слишком далеко под плашку) */}
-      <div className="pl-[260px] md:pl-[300px] flex">
-        <div className="animate-marquee">
+      {/* Окно для бегущей строки (flex-1 занимает все оставшееся место экрана) */}
+      <div className="flex-1 overflow-hidden flex items-center h-full relative">
+        
+        {/* Маленький градиент слева, чтобы текст красиво выезжал, а не обрубался (по желанию) */}
+        <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none"></div>
+
+        {/* Сама анимация */}
+        <div className="flex animate-marquee whitespace-nowrap items-center">
           <CurrencyData />
           <CurrencyData />
         </div>
