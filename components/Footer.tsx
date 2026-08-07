@@ -19,12 +19,12 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold mb-4">Навигация</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#calculator" className="hover:text-indigo-400 transition-colors">Кредиты наличными</a></li>
-              <li><a href="#credit-cards" className="hover:text-indigo-400 transition-colors">Кредитные карты</a></li>
-              <li><a href="#autoloans" className="hover:text-indigo-400 transition-colors">Автокредиты</a></li>
-              <li><a href="#mortgage" className="hover:text-indigo-400 transition-colors">Ипотека</a></li>
-              <li><a href="#bankruptcy" className="hover:text-indigo-400 transition-colors">Списание долгов</a></li>
-              <li><a href="#articles" className="hover:text-indigo-400 transition-colors">База знаний</a></li>
+              <li><Link href="/#calculator" className="hover:text-indigo-400 transition-colors">Кредиты наличными</Link></li>
+              <li><Link href="/#credit-cards" className="hover:text-indigo-400 transition-colors">Кредитные карты</Link></li>
+              <li><Link href="/#autoloans" className="hover:text-indigo-400 transition-colors">Автокредиты</Link></li>
+              <li><Link href="/#mortgage" className="hover:text-indigo-400 transition-colors">Ипотека</Link></li>
+              <li><Link href="/#bankruptcy" className="hover:text-indigo-400 transition-colors">Списание долгов</Link></li>
+              <li><Link href="/#articles" className="hover:text-indigo-400 transition-colors">База знаний</Link></li>
             </ul>
           </div>
           <div>
