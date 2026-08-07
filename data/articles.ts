@@ -952,7 +952,7 @@ export const articlesData = [
       </div>
     `
   },
-  {
+    {
     id: "40",
     title: "Карты UnionPay в 2026 году: работают ли они за границей и стоит ли открывать?",
     excerpt: "Едем в отпуск без наличных: где принимают китайскую платежную систему, выпущенную российскими банками.",
@@ -977,5 +977,6 @@ export const articlesData = [
         <p class="text-gray-600 mb-5">Мы составили актуальный список дебетовых карт UnionPay от неподсанкционных банков с бесплатным выпуском.</p>
         <a href="/#debit-cards" class="inline-block bg-gray-900 hover:bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl transition-colors duration-300">Подобрать карту &rarr;</a>
       </div>
-    }
+    `
+  }
 ];
