@@ -25,7 +25,7 @@ export default function Home() {
       <Mortgage />
       <BankruptcySection />
       const allArticles = getAllArticles();
-      <ArticlesSection articlesData={allArticles} />
+      <Articles articlesData={allArticles} />
       <Footer />
       <ScrollToTop />
     </main>
