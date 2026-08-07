@@ -1,9 +1,9 @@
 'use client';
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { articlesData } from '../data/articles'; // Твой путь к массиву
 
-export default function ArticlesSection() {
+// Передаем статьи через пропсы, так как fs работает только на сервере
+export default function ArticlesSection({ articlesData }: { articlesData: any[] }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Все');
@@ -12,18 +12,18 @@ export default function ArticlesSection() {
   const categories = useMemo(() => {
     const allCats = articlesData.map(article => article.category);
     return ['Все', ...Array.from(new Set(allCats))];
-  }, []);
+  }, [articlesData]);
 
   const filteredArticles = useMemo(() => {
     return articlesData.filter(article => {
       const matchesCategory = selectedCategory === 'Все' || article.category === selectedCategory;
       const matchesSearch = 
-        article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        article.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+        article.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        article.excerpt?.toLowerCase().includes(searchQuery.toLowerCase());
       
       return matchesCategory && matchesSearch;
     });
-  }, [searchQuery, selectedCategory]);
+  }, [articlesData, searchQuery, selectedCategory]);
 
   const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -43,6 +43,8 @@ export default function ArticlesSection() {
     setCurrentPage(pageNumber);
     document.getElementById('articles')?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  if (!articlesData || articlesData.length === 0) return null;
 
   return (
     <section id="articles" className="w-full py-16 bg-white border-t border-gray-100">
@@ -87,49 +89,36 @@ export default function ArticlesSection() {
           ))}
         </div>
 
-        {filteredArticles.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {currentArticles.map((article) => (
-              <Link 
-                key={article.id} 
-                href={`/article/${article.id}`} 
-                className="group flex flex-col bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-indigo-600 transition-all duration-300"
-              >
-                <div 
-                  className="h-2 flex-shrink-0 w-full"
-                  style={{ background: article.imageGrad || 'linear-gradient(to right, #3b82f6, #4f46e5)' }}
-                ></div>
-                
-                <div className="p-6 flex flex-col flex-grow">
-                  <span className="inline-block px-2 py-1 mb-4 text-[10px] font-bold tracking-widest text-indigo-600 bg-indigo-50 rounded uppercase w-max">
-                    {article.category}
-                  </span>
-                  <h3 className="text-base md:text-lg font-bold text-gray-900 group-hover:text-indigo-600 transition-colors mb-3 line-clamp-2 leading-snug">
-                    {article.title}
-                  </h3>
-                  <p className="text-xs md:text-sm text-gray-500 line-clamp-3 mb-6 flex-grow leading-relaxed">
-                    {article.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                    <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">{article.date}</span>
-                    <span className="text-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity text-lg font-black">→</span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-16 bg-gray-50 rounded-xl border border-dashed border-gray-200">
-            <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider">Ничего не найдено</h3>
-            <p className="text-xs text-gray-500 mt-2">Попробуйте изменить запрос.</p>
-            <button 
-              onClick={() => { setSearchQuery(''); setSelectedCategory('Все'); }}
-              className="mt-4 px-4 py-2 bg-black hover:bg-indigo-600 text-white text-xs font-bold uppercase tracking-wider rounded-md transition-colors"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {currentArticles.map((article) => (
+            <Link 
+              key={article.id} 
+              href={`/article/${article.id}`} 
+              className="group flex flex-col bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-indigo-600 transition-all duration-300"
             >
-              Сбросить
-            </button>
-          </div>
-        )}
+              <div 
+                className="h-2 flex-shrink-0 w-full"
+                style={{ background: article.imageGrad || 'linear-gradient(to right, #3b82f6, #4f46e5)' }}
+              ></div>
+              
+              <div className="p-6 flex flex-col flex-grow">
+                <span className="inline-block px-2 py-1 mb-4 text-[10px] font-bold tracking-widest text-indigo-600 bg-indigo-50 rounded uppercase w-max">
+                  {article.category}
+                </span>
+                <h3 className="text-base md:text-lg font-bold text-gray-900 group-hover:text-indigo-600 transition-colors mb-3 line-clamp-2 leading-snug">
+                  {article.title}
+                </h3>
+                <p className="text-xs md:text-sm text-gray-500 line-clamp-3 mb-6 flex-grow leading-relaxed">
+                  {article.excerpt}
+                </p>
+                <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+                  <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">{article.date}</span>
+                  <span className="text-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity text-lg font-black">→</span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
 
         {totalPages > 1 && (
           <div className="mt-12 flex justify-center items-center gap-2">
