@@ -10,6 +10,7 @@ import Articles from '@/components/Articles';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import NewsFeed from './NewsFeed';
+import { getAllArticles } from '@/lib/markdown';
 
 export default function Home() {
   return (
@@ -23,7 +24,8 @@ export default function Home() {
       <AutoLoans />
       <Mortgage />
       <BankruptcySection />
-      <Articles />
+      const allArticles = getAllArticles();
+      <ArticlesSection articlesData={allArticles} />
       <Footer />
       <ScrollToTop />
     </main>
