@@ -1,22 +1,21 @@
 import Header from '@/components/Header';
-import CurrencyWidget from '@/components/CurrencyWidget'; // <--- НОВЫЙ ИМПОРТ
+import CurrencyWidget from '@/components/CurrencyWidget';
 import Hero from '@/components/Hero';
 import Calculator from '@/components/Calculator';
 import CreditCards from '@/components/CreditCards';
 import AutoLoans from '@/components/AutoLoans';
 import Mortgage from '@/components/Mortgage';
 import BankruptcySection from '@/components/BankruptcySection';
-import Articles from '@/components/Articles';
+import Articles from '@/components/Articles'; // Твой файл Articles.tsx
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import NewsFeed from './NewsFeed';
-import { getAllArticles } from '@/lib/markdown';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       <Header />
-      <CurrencyWidget /> {/* <--- ВСТАВИЛИ ПОЛОСКУ С ВАЛЮТАМИ */}
+      <CurrencyWidget />
       <NewsFeed />
       <Hero />
       <Calculator />
@@ -24,8 +23,8 @@ export default function Home() {
       <AutoLoans />
       <Mortgage />
       <BankruptcySection />
-      const allArticles = getAllArticles();
-      <Articles articlesData={allArticles} />
+      {/* Просто вызываем компонент, он сам возьмет данные из массива */}
+      <Articles />
       <Footer />
       <ScrollToTop />
     </main>
