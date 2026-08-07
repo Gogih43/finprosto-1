@@ -41,16 +41,13 @@ export default function ArticlesSection() {
 
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
-    // ИСПРАВИЛ ТУТ: теперь скрипт ищет правильный id
     document.getElementById('articles')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    // ИСПРАВИЛ ТУТ: удалил -section из id
     <section id="articles" className="w-full py-16 bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* ЗАГОЛОВОК */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
             <div className="flex items-center gap-4 mb-3">
@@ -60,7 +57,6 @@ export default function ArticlesSection() {
             <p className="text-sm text-gray-500 ml-5 md:ml-6">Отвечаем на сложные финансовые вопросы простым языком</p>
           </div>
 
-          {/* СТРОКА ПОИСКА */}
           <div className="relative w-full md:w-72 shrink-0">
             <input
               type="text"
@@ -75,7 +71,6 @@ export default function ArticlesSection() {
           </div>
         </div>
 
-        {/* ПАНЕЛЬ РУБРИК */}
         <div className="mb-8 flex overflow-x-auto gap-2 pb-2 hide-scrollbar" style={{ scrollbarWidth: 'none' }}>
           {categories.map(category => (
             <button
@@ -92,7 +87,6 @@ export default function ArticlesSection() {
           ))}
         </div>
 
-        {/* СЕТКА СТАТЕЙ */}
         {filteredArticles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {currentArticles.map((article) => (
@@ -125,7 +119,6 @@ export default function ArticlesSection() {
             ))}
           </div>
         ) : (
-          // ЕСЛИ НИЧЕГО НЕ НАЙДЕНО
           <div className="text-center py-16 bg-gray-50 rounded-xl border border-dashed border-gray-200">
             <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider">Ничего не найдено</h3>
             <p className="text-xs text-gray-500 mt-2">Попробуйте изменить запрос.</p>
@@ -138,7 +131,6 @@ export default function ArticlesSection() {
           </div>
         )}
 
-        {/* ПАГИНАЦИЯ */}
         {totalPages > 1 && (
           <div className="mt-12 flex justify-center items-center gap-2">
             <button 
