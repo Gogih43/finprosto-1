@@ -1,9 +1,8 @@
-  'use client';
-import { useState, useMemo } from 'react';
+'use client';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
-import { articlesData } from '../data/articles'; // Твой путь к массиву
+import { articlesData } from '../data/articles'; 
 
-// ЖЕЛЕЗОБЕТОННАЯ ЗАЩИТА: Если файл статей сломан или пуст, берем пустой массив. Vercel больше не упадет!
 const safeArticles = Array.isArray(articlesData) ? articlesData : [];
 
 export default function ArticlesSection() {
@@ -11,6 +10,17 @@ export default function ArticlesSection() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Все');
   const itemsPerPage = 6;
+
+  // ВОССТАНАВЛИВАЕМ ПАМЯТЬ ПРИ ВОЗВРАТЕ НА СТРАНИЦУ
+  useEffect(() => {
+    const savedPage = sessionStorage.getItem('finPage');
+    const savedCat = sessionStorage.getItem('finCat');
+    const savedSearch = sessionStorage.getItem('finSearch');
+
+    if (savedPage) setCurrentPage(Number(savedPage));
+    if (savedCat) setSelectedCategory(savedCat);
+    if (savedSearch) setSearchQuery(savedSearch);
+  }, []);
 
   const categories = useMemo(() => {
     const allCats = safeArticles.map((article: any) => article.category || 'Без рубрики');
@@ -33,24 +43,28 @@ export default function ArticlesSection() {
   const currentArticles = filteredArticles.slice(startIndex, startIndex + itemsPerPage);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
+    const val = e.target.value;
+    setSearchQuery(val);
     setCurrentPage(1); 
+    sessionStorage.setItem('finSearch', val);
+    sessionStorage.setItem('finPage', '1');
   };
 
   const handleCategory = (category: string) => {
     setSelectedCategory(category);
     setCurrentPage(1);
+    sessionStorage.setItem('finCat', category);
+    sessionStorage.setItem('finPage', '1');
   };
 
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
-    // Исправление прокрутки: даем React 50мс на перерисовку короткой страницы
+    sessionStorage.setItem('finPage', pageNumber.toString());
     setTimeout(() => {
       document.getElementById('articles')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 50);
   };
 
-  // Если статей вообще ноль - просто не ломаем сайт, а скрываем блок (или показываем заглушку)
   if (safeArticles.length === 0) {
     return (
       <section id="articles" className="w-full py-16 bg-white border-t border-gray-100">
@@ -140,7 +154,12 @@ export default function ArticlesSection() {
             <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider">Ничего не найдено</h3>
             <p className="text-xs text-gray-500 mt-2">Попробуйте изменить запрос.</p>
             <button 
-              onClick={() => { setSearchQuery(''); setSelectedCategory('Все'); }}
+              onClick={() => { 
+                setSearchQuery(''); 
+                setSelectedCategory('Все'); 
+                sessionStorage.removeItem('finSearch');
+                sessionStorage.removeItem('finCat');
+              }}
               className="mt-4 px-4 py-2 bg-black hover:bg-indigo-600 text-white text-xs font-bold uppercase tracking-wider rounded-md transition-colors"
             >
               Сбросить
