@@ -1,4 +1,4 @@
-'use client';
+  'use client';
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { articlesData } from '../data/articles'; // Твой путь к массиву
@@ -44,7 +44,10 @@ export default function ArticlesSection() {
 
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
-    document.getElementById('articles')?.scrollIntoView({ behavior: 'smooth' });
+    // Исправление прокрутки: даем React 50мс на перерисовку короткой страницы
+    setTimeout(() => {
+      document.getElementById('articles')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
   };
 
   // Если статей вообще ноль - просто не ломаем сайт, а скрываем блок (или показываем заглушку)
