@@ -1627,7 +1627,7 @@ export const articlesData = [
     excerpt: "Не берите потребкредит на стройматериалы! Сравниваем карты с рассрочкой и бесконечным грейс-периодом для крупных трат.",
     category: "Карты",
     readTime: "6 мин",
-    date: "10 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #f59e0b, #78350f)",
     content: `
       <h3>Ремонт — это дорого</h3>
@@ -1653,7 +1653,7 @@ export const articlesData = [
     excerpt: "Вы пополнили кошелек на криптобирже или оплатили лотерею, а банк выставил счет на 5000 рублей штрафа. Разбираем скрытые правила.",
     category: "Лайфхаки",
     readTime: "5 мин",
-    date: "11 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #eab308, #b45309)",
     content: `
       <h3>Что такое Квази-кэш?</h3>
@@ -1680,7 +1680,7 @@ export const articlesData = [
     excerpt: "Почему баланс на вашей обычной карте ушел в минус и как остановить начисление процентов за перерасход.",
     category: "Карты",
     readTime: "4 мин",
-    date: "12 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #3b82f6, #1e40af)",
     content: `
       <h3>Что такое технический овердрафт?</h3>
@@ -1706,7 +1706,7 @@ export const articlesData = [
     excerpt: "Бизнес-залы в аэропортах, страховки и консьерж-сервис: лайфхаки для получения премиум-статуса в банке бесплатно.",
     category: "Лайфхаки",
     readTime: "5 мин",
-    date: "13 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #8b5cf6, #4c1d95)",
     content: `
       <h3>Зачем нужен Premium статус?</h3>
@@ -1730,7 +1730,7 @@ export const articlesData = [
     excerpt: "Думаете, биржа — это только для миллионеров? Инструкция, как купить свою первую акцию и не потерять деньги.",
     category: "Сбережения",
     readTime: "5 мин",
-    date: "14 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #059669, #022c22)",
     content: `
       <h3>Разрушаем главный миф</h3>
@@ -1755,7 +1755,7 @@ export const articlesData = [
     excerpt: "Обещают 30% в месяц на крипте и арбитраже? Как распознать современный МММ, пока вы не взяли под него кредит.",
     category: "Безопасность",
     readTime: "6 мин",
-    date: "15 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #dc2626, #7f1d1d)",
     content: `
       <h3>Новая обертка, старая суть</h3>
@@ -1781,7 +1781,7 @@ export const articlesData = [
     excerpt: "В чем разница между долей в бизнесе и долговой распиской. Собираем идеальный портфель, который не боится кризисов.",
     category: "Сбережения",
     readTime: "5 мин",
-    date: "16 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #3b82f6, #1d4ed8)",
     content: `
       <h3>Вечный спор инвесторов</h3>
@@ -1803,7 +1803,7 @@ export const articlesData = [
     excerpt: "Вы купили акции дешево, а продали дорого. Кто забирает налог и как законно не платить НДФЛ благодаря льготам.",
     category: "Налоги",
     readTime: "6 мин",
-    date: "17 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #f97316, #c2410c)",
     content: `
       <h3>Как работает налог на прибыль?</h3>
@@ -1831,7 +1831,7 @@ export const articlesData = [
     excerpt: "Восьмое чудо света по мнению Эйнштейна. Математика инвестирования, которая доказывает, что время важнее стартового капитала.",
     category: "Сбережения",
     readTime: "5 мин",
-    date: "18 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #8b5cf6, #4338ca)",
     content: `
       <h3>Секрет Уоррена Баффета</h3>
@@ -1858,7 +1858,7 @@ export const articlesData = [
     excerpt: "Бывший муж открыл самозанятость и платит копейки? Разбираем, как перевести алименты в твердую денежную сумму (ТДС) через суд.",
     category: "Лайфхаки",
     readTime: "5 мин",
-    date: "19 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #ec4899, #9d174d)",
     content: `
       <h3>Уловка с самозанятостью</h3>
@@ -1880,7 +1880,7 @@ export const articlesData = [
     excerpt: "Родственник оставил после себя ипотеку, микрозаймы и дачу. Разбираем правило «предела стоимости» и когда от наследства лучше отказаться.",
     category: "Долги",
     readTime: "6 мин",
-    date: "20 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #4c1d95, #1e1b4b)",
     content: `
       <h3>Наследство — это всё вместе</h3>
@@ -1906,7 +1906,7 @@ export const articlesData = [
     excerpt: "Собираетесь в отпуск за границу? Где сейчас выгоднее купить наличную валюту и почему менять рубли в аэропорту — худшая идея.",
     category: "Сбережения",
     readTime: "4 мин",
-    date: "21 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #10b981, #065f46)",
     content: `
       <h3>Реалии валютного рынка</h3>
@@ -1930,7 +1930,7 @@ export const articlesData = [
     excerpt: "Машины подорожали, и под повышающий коэффициент ФНС попал даже масс-маркет. Как проверить свое авто в списках Минпромторга.",
     category: "Авто",
     readTime: "5 мин",
-    date: "22 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #f97316, #9a3412)",
     content: `
       <h3>Что такое «налог на роскошь»?</h3>
@@ -1952,7 +1952,7 @@ export const articlesData = [
     excerpt: "Инструкция по обращению в Трудовую инспекцию. Как доказать факт работы, если вы не подписывали трудовой договор.",
     category: "Лайфхаки",
     readTime: "6 мин",
-    date: "23 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #ef4444, #991b1b)",
     content: `
       <h3>Главная ошибка работодателя</h3>
@@ -1979,7 +1979,7 @@ export const articlesData = [
     excerpt: "Крупные криптобиржи ушли, но крипта осталась. Разбираем, как перевести рубли со Сбера в цифровой доллар и не нарваться на мошенников.",
     category: "Инвестиции",
     readTime: "6 мин",
-    date: "24 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #14b8a6, #047857)",
     content: `
       <h3>Что такое P2P и почему это единственный выход?</h3>
@@ -2004,7 +2004,7 @@ export const articlesData = [
     excerpt: "Вывели биткоин на карту и ждете блокировку? Объясняем, как законно задекларировать доход с крипты и что будет, если этого не сделать.",
     category: "Налоги",
     readTime: "5 мин",
-    date: "25 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #f59e0b, #b45309)",
     content: `
       <h3>Видит ли налоговая вашу крипту?</h3>
@@ -2031,7 +2031,7 @@ export const articlesData = [
     excerpt: "Вам предлагают купить USDT дешевле на одной бирже и продать дороже на другой? Раскрываем схему обмана, на которой люди теряют миллионы.",
     category: "Безопасность",
     readTime: "6 мин",
-    date: "26 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #ef4444, #991b1b)",
     content: `
       <h3>Золотые горы в Telegram</h3>
@@ -2058,7 +2058,7 @@ export const articlesData = [
     excerpt: "Санкции и блокировки россиян на биржах. Чем Ledger отличается от Trust Wallet и почему хранить деньги на бирже больше нельзя.",
     category: "Сбережения",
     readTime: "7 мин",
-    date: "27 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #3b82f6, #1d4ed8)",
     content: `
       <h3>Главное правило криптомира</h3>
@@ -2080,7 +2080,7 @@ export const articlesData = [
     excerpt: "Тапаем по экрану и ждем миллионы. Разбираем феномен 'кликеров' и почему 99% новых токенов никогда не выйдут на реальную биржу.",
     category: "Инвестиции",
     readTime: "5 мин",
-    date: "28 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #8b5cf6, #4338ca)",
     content: `
       <h3>Бум тапалок и airdrop-ов</h3>
@@ -2107,7 +2107,7 @@ export const articlesData = [
     excerpt: "Не можете отложить ни копейки до зарплаты? Разбираем самое популярное правило распределения денег, которое работает даже при скромных доходах.",
     category: "Сбережения",
     readTime: "5 мин",
-    date: "29 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #10b981, #047857)",
     content: `
       <h3>Хватит считать каждую копейку</h3>
@@ -2132,7 +2132,7 @@ export const articlesData = [
     excerpt: "Простая советская система планирования бюджета, адаптированная под современные банковские приложения.",
     category: "Лайфхаки",
     readTime: "4 мин",
-    date: "30 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #f59e0b, #c2410c)",
     content: `
       <h3>Для кого этот метод?</h3>
@@ -2158,7 +2158,7 @@ export const articlesData = [
     excerpt: "Потеря работы или сломанный зуб больше не вызовут панику. Собираем резервный фонд семьи по правилам инвесторов.",
     category: "Сбережения",
     readTime: "5 мин",
-    date: "31 августа 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #3b82f6, #1d4ed8)",
     content: `
       <h3>Что такое финансовая подушка?</h3>
@@ -2184,7 +2184,7 @@ export const articlesData = [
     excerpt: "Моя зарплата — это моя зарплата, а твоя — наша общая? Разбираем 3 модели семейного бюджета и выбираем лучшую для вашей пары.",
     category: "Лайфхаки",
     readTime: "6 мин",
-    date: "01 сентября 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #8b5cf6, #4c1d95)",
     content: `
       <h3>Ссоры из-за денег — причина разводов №1</h3>
@@ -2207,7 +2207,7 @@ export const articlesData = [
     excerpt: "Субсидии, счетчики и перерасчеты за отпуск. Сокращаем самую раздражающую статью семейных расходов.",
     category: "Лайфхаки",
     readTime: "5 мин",
-    date: "02 сентября 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #0ea5e9, #0369a1)",
     content: `
       <h3>Коммуналка съедает бюджет</h3>
@@ -2231,7 +2231,7 @@ export const articlesData = [
     excerpt: "Вы получили ссылку на бесплатный Телеграм Премиум или просьбу проголосовать за племянницу? Почему нельзя по ней кликать.",
     category: "Безопасность",
     readTime: "5 мин",
-    date: "03 сентября 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #3b82f6, #0284c7)",
     content: `
       <h3>Схема, на которую попадаются все</h3>
@@ -2253,7 +2253,7 @@ export const articlesData = [
     excerpt: "Вас пугают уголовным делом за спонсирование терроризма и заставляют перевести деньги в ячейку. Как сбить мошенника с толку.",
     category: "Безопасность",
     readTime: "6 мин",
-    date: "04 сентября 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #ef4444, #991b1b)",
     content: `
       <h3>Психология страха</h3>
@@ -2279,7 +2279,7 @@ export const articlesData = [
     excerpt: "Вам предлагают ставить лайки товарам и получать по 500 рублей в день. Разбираем новую ловушку для мам в декрете и студентов.",
     category: "Безопасность",
     readTime: "5 мин",
-    date: "05 сентября 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #a855f7, #6d28d9)",
     content: `
       <h3>Начало: легкие деньги</h3>
@@ -2301,7 +2301,7 @@ export const articlesData = [
     excerpt: "Вы получаете голосовое сообщение от мамы с просьбой перевести деньги. Голос точно её, но это ИИ. Как не стать жертвой.",
     category: "Лайфхаки",
     readTime: "4 мин",
-    date: "06 сентября 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #10b981, #047857)",
     content: `
       <h3>Искусственный интеллект на службе преступников</h3>
@@ -2326,7 +2326,7 @@ export const articlesData = [
     excerpt: "Осознание пришло слишком поздно. Что нужно сделать в первые 30 минут, чтобы увеличить шансы на возврат средств.",
     category: "Долги",
     readTime: "6 мин",
-    date: "07 сентября 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #f59e0b, #b45309)",
     content: `
       <h3>Счет идет на минуты</h3>
@@ -2350,7 +2350,7 @@ export const articlesData = [
     excerpt: "Разводимся, а кредиты остаются. Как закон делит общие и личные долги, и почему банк может заставить платить вас за чужой телефон.",
     category: "Долги",
     readTime: "6 мин",
-    date: "08 сентября 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #db2777, #9d174d)",
     content: `
       <h3>Общие и личные долги</h3>
@@ -2374,7 +2374,7 @@ export const articlesData = [
     excerpt: "Государство дает деньги, которые не нужно возвращать. Кто имеет право на субсидию и на что ее можно потратить.",
     category: "Бизнес",
     readTime: "5 мин",
-    date: "09 сентября 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #10b981, #047857)",
     content: `
       <h3>Что такое социальный контракт?</h3>
@@ -2402,7 +2402,7 @@ export const articlesData = [
     excerpt: "Вам предлагают 5000 рублей за оформление карты на ваше имя? Разбираем схему дропперов и пожизненную блокировку от ЦБ.",
     category: "Безопасность",
     readTime: "4 мин",
-    date: "10 сентября 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #b91c1c, #7f1d1d)",
     content: `
       <h3>Как вербуют студентов и подростков</h3>
@@ -2428,7 +2428,7 @@ export const articlesData = [
     excerpt: "Ошиблись одной цифрой и отправили деньги незнакомцу. Работает ли отмена перевода и как привлечь полицию.",
     category: "Лайфхаки",
     readTime: "5 мин",
-    date: "11 сентября 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #f59e0b, #c2410c)",
     content: `
       <h3>Главная проблема СБП</h3>
@@ -2451,7 +2451,7 @@ export const articlesData = [
     excerpt: "Опека не дает продать жилье? Как правильно выделить доли, получить разрешение и купить новую квартиру.",
     category: "Недвижимость",
     readTime: "6 мин",
-    date: "12 сентября 2026",
+    date: "09 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #3b82f6, #0369a1)",
     content: `
       <h3>Главный страх маткапитала</h3>
