@@ -64,7 +64,6 @@ export default function ArticlesSection() {
     }, 50);
   };
 
-  // === УМНАЯ ПАГИНАЦИЯ (АЛГОРИТМ) ===
   const getPaginationItems = () => {
     if (totalPages <= 7) {
       return Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -114,7 +113,8 @@ export default function ArticlesSection() {
           </div>
         </div>
 
-        <div className="mb-8 flex overflow-x-auto gap-2 pb-2 hide-scrollbar" style={{ scrollbarWidth: 'none' }}>
+        {/* 🛠 ВОТ ЗДЕСЬ ИСПРАВЛЕНИЕ: ДОБАВЛЕНО md:flex-wrap ДЛЯ КОМПЬЮТЕРОВ */}
+        <div className="mb-8 flex overflow-x-auto md:flex-wrap gap-2 md:gap-3 pb-2 hide-scrollbar" style={{ scrollbarWidth: 'none' }}>
           {categories.map(category => (
             <button
               key={category}
@@ -154,7 +154,6 @@ export default function ArticlesSection() {
           </div>
         )}
 
-        {/* ВЫВОД УМНОЙ ПАГИНАЦИИ */}
         {totalPages > 1 && (
           <div className="mt-12 flex justify-center items-center gap-1 md:gap-2">
             <button 
