@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // 2. Автоматически перебираем все 300 статей из массива
   const articleRoutes: MetadataRoute.Sitemap = articlesData.map((article) => ({
-    url: `${baseUrl}/article/${article.id}`, // ВАЖНО: убедись, что у тебя урл статей выглядит именно так (/article/1)
+    url: `${baseUrl}/article/${article.id}/`, // ВАЖНО: убедись, что у тебя урл статей выглядит именно так (/article/1)
     lastModified: new Date('2026-08-12'),
     changeFrequency: 'weekly',
     priority: 0.8,
