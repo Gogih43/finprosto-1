@@ -7529,7 +7529,7 @@ export const articlesData = [
     excerpt: "Новые макропруденциальные лимиты Центробанка. Разбираем, почему банки теперь массово отказывают надежным клиентам и как пустая кредитка лишит вас ипотеки.",
     category: "Новости",
     readTime: "4 мин",
-    date: "25 августа 2026",
+    date: "18 августа 2026",
     imageGrad: "linear-gradient(to bottom right, #ef4444, #7f1d1d)",
     content: `
       <div class="mb-6 inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
