@@ -12,13 +12,22 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
     };
   }
 
+  // Формируем правильную ссылку с www
+  const articleUrl = `https://www.finprosto-gid.ru/article/${params.id}`;
+
   return {
     title: `${article.title} | Фин просто`,
     description: article.excerpt,
+    // ИСПРАВЛЕНО: Добавлен канонический URL
+    alternates: {
+      canonical: articleUrl,
+    },
     openGraph: {
       title: article.title,
       description: article.excerpt,
       type: 'article',
+      // ИСПРАВЛЕНО: Добавлен URL для соцсетей
+      url: articleUrl,
     },
   };
 }
