@@ -6,6 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://finprosto-gid.ru/sitemap.xml',
+    // ИСПРАВЛЕНО: добавлено www.
+    sitemap: 'https://www.finprosto-gid.ru/sitemap.xml',
   };
 }
