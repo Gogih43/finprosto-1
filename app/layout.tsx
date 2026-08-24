@@ -3,6 +3,8 @@ import { Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 // ПОДКЛЮЧАЕМ МЕТРИКУ
 import YandexMetrika from '@/components/YandexMetrika'; 
+// ⚡ ПОДКЛЮЧАЕМ ГУГЛ АНАЛИТИКУ
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 const roboto = Roboto({ 
   weight: ['400', '500', '700'],
@@ -54,6 +56,8 @@ export default function RootLayout({
 
         {/* НЕВИДИМЫЙ СКРИПТ МЕТРИКИ */}
         <YandexMetrika />
+        {/* ⚡ НЕВИДИМЫЙ СКРИПТ ГУГЛ АНАЛИТИКИ */}
+        <GoogleAnalytics />
 
       </body>
     </html>
