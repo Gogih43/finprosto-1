@@ -17,6 +17,9 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
+  // ⚡ ДОБАВЛЕНО: Говорим Next.js, что наш официальный домен С www
+  metadataBase: new URL('https://www.finprosto-gid.ru'),
+  
   title: "FINПРОСТО — Честный подбор кредитов и лизинга",
   description: "Независимый финансовый помощник. Сравниваем реальные условия банков, переплаты и скрытые комиссии. Автокредит, рефинансирование, лизинг.",
   verification: {
@@ -26,6 +29,10 @@ export const metadata: Metadata = {
   // ⚡ ВОТ ЭТА КОМАНДА ЗАСТАВИТ ТУПОГО РОБОТА ЯНДЕКСА УВИДЕТЬ ВАШ FAVICON
   icons: {
     icon: '/favicon.ico',
+  },
+  // ⚡ ДОБАВЛЕНО: Канонический тег для Главной страницы
+  alternates: {
+    canonical: '/',
   },
 };
 
