@@ -11,7 +11,7 @@ import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import DebitCards from '@/components/DebitCards';
 import MfoList from '@/components/MfoList';
-import NewsFeed from '@./NewsFeed';
+import NewsFeed from './NewsFeed';
 
 export default function Home() {
   return (
