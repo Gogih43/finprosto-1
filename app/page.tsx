@@ -9,6 +9,8 @@ import BankruptcySection from '@/components/BankruptcySection';
 import Articles from '@/components/Articles'; // Твой файл Articles.tsx
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
+import DebitCards from '@/components/DebitCards';
+import MfoList from '@/components/MfoList';
 import NewsFeed from './NewsFeed';
 
 export default function Home() {
@@ -20,6 +22,8 @@ export default function Home() {
       <Hero />
       <Calculator />
       <CreditCards />
+      <DebitCards /> 
+      <MfoList />
       <AutoLoans />
       <Mortgage />
       <BankruptcySection />
