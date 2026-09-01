@@ -27,6 +27,10 @@ export const metadata: Metadata = {
   verification: {
     yandex: 'd5853ae0415c706c',
     google: 'pkBd6cFffMTz6aIu9egTNKrpbySZVX3nQXTTu2Uj5dk',
+    // ⚡ ВОТ ОН - КЛЮЧ ДЛЯ ПРИВЯЗКИ ЯНДЕКС.ДЗЕНА
+    other: {
+      'zen-verification': 'cZLgDv39ceoghHnsToWKJ1rbql0s2jpt10nVaxej1KzP96IlQhkHOD6sq3gs75La',
+    },
   },
   // ⚡ ВОТ ЭТА КОМАНДА ЗАСТАВИТ ТУПОГО РОБОТА ЯНДЕКСА УВИДЕТЬ ВАШ FAVICON
   icons: {
