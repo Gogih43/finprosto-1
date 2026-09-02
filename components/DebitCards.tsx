@@ -3,35 +3,35 @@
 export default function DebitCards() {
   const debitOffers = [
     { 
-      name: "Т-Банк Black", 
+      name: "Дебетовая Альфа-Карта", 
       maintenance: "0 ₽ навсегда", 
-      cashback: "до 30% рублями", 
-      features: "Переводы без комиссии",
-      tag: "Лучшая для кэшбэка",
-      link: "#" // ВСТАВЬ СЮДА СВОЮ ССЫЛКУ
-    },
-    { 
-      name: "Альфа-Карта", 
-      maintenance: "Бесплатно", 
       cashback: "5% в 4 категориях", 
-      features: "100% на случайную категорию",
-      tag: "🔥 Хит: Суперкэшбэк",
-      link: "#" // ВСТАВЬ СЮДА ССЫЛКУ
+      features: "Суперкэшбэк до 100% каждый месяц",
+      tag: "🔥 Хит продаж",
+      link: "https://trckcp.com/dl/YUg7ETxCGlb0/69/?erid=2SDnjcN7kbk" // <-- ТВОЯ ССЫЛКА НА АЛЬФУ ИЗ РАФИНАДА
     },
     { 
-      name: "Умная карта Газпромбанк", 
-      maintenance: "0 ₽ без условий", 
-      cashback: "до 50% у партнеров", 
-      features: "Надбавка по накопительному счету",
-      tag: "Выбор для вкладов",
-      link: "#" // ВСТАВЬ СЮДА ССЫЛКУ
+      name: "ВТБ Карта МИР", 
+      maintenance: "0 ₽ всегда", 
+      cashback: "До 25% в любимых категориях", 
+      features: "Снятие без комиссии в любых банкоматах",
+      tag: "Высокий кэшбэк",
+      link: "https://trckcp.com/dl/5VdlQZnCRf8J/18/?erid=2SDnjeQbg8S" // <-- ТВОЯ ССЫЛКА НА ВТБ ИЗ РАФИНАДА
+    },
+    { 
+      name: "Т-Банк Black", 
+      maintenance: "Бесплатно", 
+      cashback: "До 30% у партнеров", 
+      features: "Переводы без комиссии до 100 000 ₽",
+      tag: "Народный выбор",
+      link: "https://trckcp.com/dl/FsqSGX8NaP3Y/155/?erid=2SDnjdrL4Tr" // <-- ТВОЯ ССЫЛКА НА Т-БАНК ИЗ РАФИНАДА
     }
   ];
 
   return (
     <section className="py-16 bg-white border-t border-gray-100" id="debit-cards">
       <div className="container mx-auto px-4 max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-8 text-center">Дебетовые карты</h2>
+        <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-8 text-center">Дебетовые карты с кэшбэком</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {debitOffers.map((card, index) => (
              <div key={index} className="bg-gray-50 border border-gray-100 rounded-3xl p-6 hover:shadow-lg transition-all flex flex-col h-full">
