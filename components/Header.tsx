@@ -18,11 +18,13 @@ export default function Header() {
           {/* МЕНЮ ДЛЯ КОМПЬЮТЕРА */}
           <nav className="hidden md:flex items-center gap-4 lg:gap-6 font-medium text-gray-600 text-sm lg:text-base">
             <Link href="/#calculator" className="hover:text-indigo-600 transition-colors">Кредиты</Link>
-            <Link href="/#credit-cards" className="hover:text-indigo-600 transition-colors">Карты</Link>
+            <Link href="/#credit-cards" className="hover:text-indigo-600 transition-colors">Кредитки</Link>
+            <Link href="/#debit-cards" className="hover:text-indigo-600 transition-colors">Дебетовки</Link>
             <Link href="/#autoloans" className="hover:text-indigo-600 transition-colors">Авто</Link>
             <Link href="/#mortgage" className="hover:text-indigo-600 transition-colors">Ипотека</Link>
+            <Link href="/#mfo" className="hover:text-indigo-600 transition-colors">Займы</Link>
             <Link href="/#bankruptcy" className="hover:text-red-600 transition-colors">Банкротство</Link>
-            <Link href="/#articles" className="hover:text-indigo-600 transition-colors">База знаний</Link>
+            <Link href="/#articles" className="hover:text-indigo-600 transition-colors">Статьи</Link>
           </nav>
           
           {/* КНОПКА СПРАВА (ДЛЯ КОМПЬЮТЕРА) */}
@@ -51,8 +53,10 @@ export default function Header() {
           <div className="flex flex-col px-4 pt-2 pb-6 space-y-4 font-medium text-gray-600">
             <Link href="/#calculator" onClick={() => setIsMobileMenuOpen(false)} className="text-left py-2 border-b border-gray-50">Кредиты наличными</Link>
             <Link href="/#credit-cards" onClick={() => setIsMobileMenuOpen(false)} className="text-left py-2 border-b border-gray-50">Кредитные карты</Link>
+            <Link href="/#debit-cards" onClick={() => setIsMobileMenuOpen(false)} className="text-left py-2 border-b border-gray-50">Дебетовые карты</Link>
             <Link href="/#autoloans" onClick={() => setIsMobileMenuOpen(false)} className="text-left py-2 border-b border-gray-50">Автокредиты</Link>
             <Link href="/#mortgage" onClick={() => setIsMobileMenuOpen(false)} className="text-left py-2 border-b border-gray-50">Ипотека</Link>
+            <Link href="/#mfo" onClick={() => setIsMobileMenuOpen(false)} className="text-left py-2 border-b border-gray-50 text-indigo-600">Займы под 0%</Link>
             <Link href="/#bankruptcy" onClick={() => setIsMobileMenuOpen(false)} className="text-left py-2 border-b border-gray-50 text-red-600">Банкротство 127-ФЗ</Link>
             <Link href="/#articles" onClick={() => setIsMobileMenuOpen(false)} className="text-left py-2 border-b border-gray-50">База знаний</Link>
           </div>
