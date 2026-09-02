@@ -13,7 +13,7 @@ export default function Footer() {
               FIN<span className="text-indigo-500">ПРОСТО</span>
             </span>
             <p className="text-sm text-gray-400 max-w-sm">
-              Независимый сервис подбора финансовых услуг. Помогаем сравнивать потребительские кредиты, кредитные карты, автокредиты и ипотеку, чтобы вы принимали выгодные решения.
+              Независимый сервис подбора финансовых услуг. Помогаем сравнивать потребительские кредиты, дебетовые и кредитные карты, займы, автокредиты и ипотеку, чтобы вы принимали выгодные решения.
             </p>
           </div>
           <div>
@@ -21,8 +21,10 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li><Link href="/#calculator" className="hover:text-indigo-400 transition-colors">Кредиты наличными</Link></li>
               <li><Link href="/#credit-cards" className="hover:text-indigo-400 transition-colors">Кредитные карты</Link></li>
+              <li><Link href="/#debit-cards" className="hover:text-indigo-400 transition-colors">Дебетовые карты</Link></li>
               <li><Link href="/#autoloans" className="hover:text-indigo-400 transition-colors">Автокредиты</Link></li>
               <li><Link href="/#mortgage" className="hover:text-indigo-400 transition-colors">Ипотека</Link></li>
+              <li><Link href="/#mfo" className="hover:text-indigo-400 transition-colors">Займы под 0%</Link></li>
               <li><Link href="/#bankruptcy" className="hover:text-indigo-400 transition-colors">Списание долгов</Link></li>
               <li><Link href="/#articles" className="hover:text-indigo-400 transition-colors">База знаний</Link></li>
             </ul>
