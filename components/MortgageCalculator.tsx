@@ -96,7 +96,7 @@ export default function MortgageCalculator() {
             </div>
 
             <div className="mt-8 p-5 bg-indigo-50 border border-indigo-100 rounded-2xl">
-              <h4 className="font-bold text-indigo-900 mb-4">Ежемесячная досрочка</h4>
+              <h4 className="font-bold text-indigo-900 mb-4">Ежемесячный досрочный платеж</h4>
               <div className="flex justify-between mb-2">
                 <label className="text-sm text-indigo-700">Вносить сверх платежа (₽)</label>
                 <span className="text-indigo-700 font-bold">+{formatNum(earlyPayment)}</span>
