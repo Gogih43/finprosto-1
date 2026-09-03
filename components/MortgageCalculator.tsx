@@ -63,7 +63,7 @@ export default function MortgageCalculator() {
     <section className="py-16 bg-white border-t border-gray-100" id="mortgage-calc">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">Умный калькулятор досрочек</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">Умный калькулятор досрочных платежей</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Узнайте, как добавление всего пары тысяч рублей к ежемесячному платежу ломает банковскую систему и экономит вам миллионы на ипотеке.
           </p>
