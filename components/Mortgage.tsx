@@ -15,21 +15,21 @@ export default function Mortgage() {
       name: "ВТБ", 
       rate: "от 6.0%", 
       type: "Семейная ипотека", 
-      link: "ВСТАВИТЬ_ССЫЛКУ_ВТБ_ИПОТЕКА" 
+      link: "https://www.vtb.ru/personal/ipoteka/" 
     },
     // 3. Сбербанк (Для солидности, без партнерки)
     { 
       name: "Сбербанк", 
       rate: "от 8.0%", 
       type: "Новостройка", 
-      link: "https://www.sberbank.com/ru/person/credits/home" 
+      link: "https://www.sberbank.ru/ru/person/credits/homenew" 
     },
     // 4. ПСБ или Газпромбанк
     { 
       name: "ПСБ", 
       rate: "от 8.5%", 
       type: "Вторичное жилье", 
-      link: "ВСТАВИТЬ_ССЫЛКУ_ПСБ_ИПОТЕКА" 
+      link: "https://www.psbank.ru/personal/mortgage" 
     },
   ];
 
